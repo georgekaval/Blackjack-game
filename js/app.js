@@ -11,28 +11,26 @@ const randomizeDeck = () => {
     [defineDeck[i],defineDeck[j]] = [defineDeck[j], defineDeck[i]]
   }
 }
-randomizeDeck()
+// randomizeDeck()
 console.log(defineDeck);
 
 //Have the computer choose the first 2 cards for itself and the user
 let computerCards = []
 let userCards = []
-const chooseCardsToDeal = () => {
+const dealCards = () => {
   computerCards = defineDeck.splice(0,2)
   userCards = defineDeck.splice(0,2)
 }
-chooseCardsToDeal()
+// chooseCardsToDeal()
 console.log(computerCards);
 console.log(userCards);
 console.log(defineDeck);
 
-//Choose another card when hit me is activated in game
-const hitMe = (who) => {
+//Choose another card, this is called in the hitMeCheckTwentyOne function
+const hitMeBasic = (who) => {
   who.push(...defineDeck.splice(0,1))
 }
-hitMe(userCards)
-console.log(userCards);
-console.log(defineDeck);
+
 
 //Have the computer count the cards values in a hand
 let sum = 0
@@ -41,22 +39,23 @@ const countCardValue = (who) => {
     sum += who[i].value
   }return sum
 }
-countCardValue(userCards)
+// countCardValue(userCards)
 console.log(sum);
 
-//Have the computer check if a hand is over 21 in value
-const checkTwentyOne = (who) => {
+//Have the computer check when the hit me button is clicked, if you passed 21 and lost
+const hitMeCheckTwentyOne = (who) => {
   sum = 0
+  hitMeBasic(who);
   countCardValue(who)
-  console.log(sum);
-  if(sum > 21){
+  if(sum > 21) {
     alert('Over 21, good try!')
   }
 }
-checkTwentyOne(userCards)
+// hitMeCheckTwentyOne(userCards)
+console.log(userCards);
+console.log(sum);
 
-//Have the computer compare the two hands and see who won
-
+//Have the computer compare the two hands and see who won, if no one hit over 21 already
 const checkHands = () => {
   sum = 0
   countCardValue(userCards)
@@ -66,8 +65,43 @@ const checkHands = () => {
   computerSum = sum
   if(userSum > computerSum) {
     alert('Player won')
-  }else {
+  }else if(computerSum > userSum){
     alert('computer won')
+  }else {
+    alert('You tied!')
   }
 }
-checkHands()
+// checkHands()
+
+//Make the Start game button shuffle the deck
+$(() => {
+  $('#start').on('click', () => {
+    randomizeDeck()
+    const $dealButton = $('<button>').text('Deal')
+    $('body').append($dealButton)
+    $($dealButton).on('click', () => {
+      dealCards()
+      console.log(userCards);
+      console.log(computerCards);
+      const $userCurrentCards = $('<h3>').text(`User card value is ${countCardValue(userCards)}`)
+      $('#user').append($userCurrentCards)
+      const $computerCurrentCards = $('<h3>').text(`Computer card value is ${countCardValue(computerCards)}`)
+      $('#computer').append($computerCurrentCards)
+      const $hitMeButton = $('<button>').text('Hit Me')
+      $('body').append($hitMeButton)
+      const $stayButton = $('<button>').text('Stay')
+      $('body').append($stayButton)
+      $($hitMeButton).on('click', () => {
+        hitMeCheckTwentyOne(userCards)
+      })
+      $($stayButton).on('click', () => {
+        if(countCardValue(computerCards) < 15){
+          hitMeCheckTwentyOne(computerCards)
+        }else {
+          checkHands()
+        }
+      })
+    })
+  })
+
+})

@@ -34,12 +34,17 @@ hitMe(userCards)
 console.log(userCards);
 console.log(defineDeck);
 
-//Have the computer count the cards values
+//Have the computer count the cards values in a hand
 let sum = 0
 const countCardValue = (who) => {
   for(let i = 0; i < who.length; i ++){
     sum += who[i].value
-  }
+  }return sum
 }
 countCardValue(userCards)
 console.log(sum);
+
+//Have the computer check if a hand is over 21 in value
+// const checkTwentyOne = (callback) => {
+//
+// }

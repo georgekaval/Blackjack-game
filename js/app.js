@@ -25,3 +25,11 @@ chooseCardsToDeal()
 console.log(computerCards);
 console.log(userCards);
 console.log(defineDeck);
+
+//Choose another card when hit me is activated in game
+const hitMe = (who) => {
+  who.push(...defineDeck.splice(0,1))
+}
+hitMe(userCards)
+console.log(userCards);
+console.log(defineDeck);

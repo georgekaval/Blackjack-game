@@ -54,3 +54,20 @@ const checkTwentyOne = (who) => {
   }
 }
 checkTwentyOne(userCards)
+
+//Have the computer compare the two hands and see who won
+
+const checkHands = () => {
+  sum = 0
+  countCardValue(userCards)
+  userSum = sum
+  sum = 0
+  countCardValue(computerCards)
+  computerSum = sum
+  if(userSum > computerSum) {
+    alert('Player won')
+  }else {
+    alert('computer won')
+  }
+}
+checkHands()

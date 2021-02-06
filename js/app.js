@@ -45,6 +45,12 @@ countCardValue(userCards)
 console.log(sum);
 
 //Have the computer check if a hand is over 21 in value
-// const checkTwentyOne = (callback) => {
-//
-// }
+const checkTwentyOne = (who) => {
+  sum = 0
+  countCardValue(who)
+  console.log(sum);
+  if(sum > 21){
+    alert('Over 21, good try!')
+  }
+}
+checkTwentyOne(userCards)

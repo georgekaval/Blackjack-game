@@ -18,9 +18,10 @@ console.log(defineDeck);
 let computerCards = []
 let userCards = []
 const chooseCardsToDeal = () => {
-  computerCards = [defineDeck[0], defineDeck[1]];
-  userCards = [defineDeck[2], defineDeck[3]]
+  computerCards = defineDeck.splice(0,2)
+  userCards = defineDeck.splice(0,2)
 }
 chooseCardsToDeal()
 console.log(computerCards);
 console.log(userCards);
+console.log(defineDeck);

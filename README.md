@@ -1,6 +1,6 @@
 # Blackjack-game
 
-<img src="https://wireframe.cc/CL7Pdv">
+![Wireframe](Wireframe_Blackjack.png)
 1.As a user, I should be able to start a new blackjack game.s
 2.As a user, I should be given an $200 allowance to play with.
 3. As a user, I should be told when I need to place an ante.

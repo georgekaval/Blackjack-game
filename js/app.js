@@ -34,6 +34,7 @@ const countCardValue = (who) => {
   }return sum
 }
 
+
 //Have the computer check when the hit me button is clicked, if you passed 21 and lost
 const hitMeCheckTwentyOne = (who) => {
   sum = 0
@@ -64,10 +65,7 @@ const checkHands = () => {
 
 //Make the Start game button shuffle the deck
 $(() => {
-  const $userList = $('<ul>')
-  const $computerList = $('<ul>')
-  $('.user').append($userList)
-  $('.computer').append($computerList)
+
 
   $('#start').one('click', () => {
     //shuffle the deck and make the deal button
@@ -82,25 +80,30 @@ $(() => {
       $($dealButton).off('click')
       console.log(userCards);
       console.log(computerCards);
-      //create list items which I can use each list item as a individual card?
-      // const $userLi = $('<li>')
-      // $userList.append($userLi)
-      // const $computerLi = $('<li>')
-      // $computerList.append($computerLi)
-      //display the users cards and value of their cards
-      const $userCurrentCardsValue = $('<h3>').text(`User has these cards ${userCards[0].card} of ${userCards[0].suit}, ${userCards[1].card} of ${userCards[1].suit} and the card value is ${countCardValue(userCards)}`)
-      $('#user').append($userCurrentCardsValue)
-      const $computerCurrentCardsValue = $('<h3>').text(`Computer has these cards ${computerCards[0].card} of ${computerCards[0].suit}, ${computerCards[1].card} of ${computerCards[1].suit} and the card value is ${countCardValue(computerCards)}`)
-      $('#computer').append($computerCurrentCardsValue)
 
+      //display the users cards and value of their cards
+      //want to make this into a function that can determine how many cards are had, then show their names and value. Want to make a function so it can be called again after I click hit me or when the computer is adding cards to itself.
+      const $userCurrentCardsValue = $('<h3>').text(` ${countCardValue(userCards)}`)
+      $('#userCurrentValue').append($userCurrentCardsValue)
+      const $computerCurrentCardsValue = $('<h3>').text(` ${countCardValue(computerCards)}`)
+      $('#computerCurrentValue').append($computerCurrentCardsValue)
+
+      const $computerCards = $('<h3>').text(`Computer has these cards ${computerCards[0].card} of ${computerCards[0].suit}, ${computerCards[1].card} of ${computerCards[1].suit}`)
+      $('#computerCardsContainer').append($computerCards)
+      const $userCards =  $('<h3>').text(`User has these cards ${userCards[0].card} of ${userCards[0].suit}, ${userCards[1].card} of ${userCards[1].suit}.`)
+      $('#userCardsContainer').append($userCards)
+      //make the hit me and stay button
       const $hitMeButton = $('<button>').text('Hit Me')
       $('body').append($hitMeButton)
       const $stayButton = $('<button>').text('Stay')
       $('body').append($stayButton)
+
       $($hitMeButton).on('click', () => {
+        //gives another card and checks if they went over 21
         hitMeCheckTwentyOne(userCards)
       })
       $($stayButton).on('click', () => {
+        //user stays with their cards and the computer gives itself another card if its cards value is less than 15, if not then checkhands has the cards compared to see who the winner is
         if(countCardValue(computerCards) < 15){
           hitMeCheckTwentyOne(computerCards)
         }else {

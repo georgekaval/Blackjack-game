@@ -63,12 +63,14 @@ const checkHands = () => {
 
 //Make the Start game button shuffle the deck
 $(() => {
-  $('#start').on('click', () => {
+  $('#start').one('click', () => {
     randomizeDeck()
     const $dealButton = $('<button>').text('Deal')
     $('body').append($dealButton)
     $($dealButton).on('click', () => {
       dealCards()
+      $('#start').off('click')
+      $($dealButton).off('click')
       console.log(userCards);
       console.log(computerCards);
       const $userCurrentCards = $('<h3>').text(`User card value is ${countCardValue(userCards)}`)
@@ -92,4 +94,10 @@ $(() => {
     })
   })
 
+//Make your cards be shown instead of just the value of them to the user
+//computer value is not updating after you click stay
+//user value is not updating when you click hit me
+//if someone goes over 21, hit me and stay are still available, game should be over then and someone should get a point temporarily until i figure out the money part of this
+//A new round button should come on to restart the round when a round is Over
+//Make A have the possibility of having the value of 1 or 11
 })

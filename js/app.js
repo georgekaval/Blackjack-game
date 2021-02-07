@@ -61,8 +61,14 @@ const checkHands = () => {
     alert('You tied!')
   }
 }
-//
-
+//display the value of the users cards to the user
+const userCardsValue = () => {
+  $('#uservalue').text(` ${countCardValue(userCards)}`)
+}
+//display the value of the computers cards to the user
+const computerCardsValue = () => {
+  $('#computervalue').text(` ${countCardValue(computerCards)}`)
+}
 //Make the Start game button shuffle the deck
 $(() => {
 
@@ -71,7 +77,7 @@ $(() => {
     //shuffle the deck and make the deal button
     randomizeDeck()
     const $dealButton = $('<button>').text('Deal')
-    $('body').append($dealButton)
+    $('#topButtons').append($dealButton)
 
     $($dealButton).on('click', () => {
       //give each player two cards, turn the start button and the deal button off
@@ -83,10 +89,9 @@ $(() => {
 
       //display the users cards and value of their cards
       //want to make this into a function that can determine how many cards are had, then show their names and value. Want to make a function so it can be called again after I click hit me or when the computer is adding cards to itself.
-      const $userCurrentCardsValue = $('<h3>').text(` ${countCardValue(userCards)}`)
-      $('#userCurrentValue').append($userCurrentCardsValue)
-      const $computerCurrentCardsValue = $('<h3>').text(` ${countCardValue(computerCards)}`)
-      $('#computerCurrentValue').append($computerCurrentCardsValue)
+
+      userCardsValue()
+      computerCardsValue()
 
       const $computerCards = $('<h3>').text(`Computer has these cards ${computerCards[0].card} of ${computerCards[0].suit}, ${computerCards[1].card} of ${computerCards[1].suit}`)
       $('#computerCardsContainer').append($computerCards)
@@ -94,9 +99,9 @@ $(() => {
       $('#userCardsContainer').append($userCards)
       //make the hit me and stay button
       const $hitMeButton = $('<button>').text('Hit Me')
-      $('body').append($hitMeButton)
+      $('#user').append($hitMeButton)
       const $stayButton = $('<button>').text('Stay')
-      $('body').append($stayButton)
+      $('#user').append($stayButton)
 
       $($hitMeButton).on('click', () => {
         //gives another card and checks if they went over 21

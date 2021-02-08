@@ -40,20 +40,26 @@ const hitMeCheckTwentyOne = (who, button1, button2) => {
   sum = 0
   hitMeBasic(who);
   countCardValue(who)
-  if(sum > 21) {
-    alert(`Over 21, ${who} lost!`)
+  if(sum > 21 && who === userCards) {
+    alert(`Over 21, User lost!`)
+    $(button1).off('click')
+    $(button2).off('click')
+  }if(sum > 21 && who === computerCards) {
+    alert(`Over 21, Computer lost!`)
     $(button1).off('click')
     $(button2).off('click')
   }
 }
 //Have the computer compare the two hands and see who won, if no one hit over 21 already
-const checkHands = () => {
+const checkHands = (button1, button2) => {
   sum = 0
   countCardValue(userCards)
   userSum = sum
   sum = 0
   countCardValue(computerCards)
   computerSum = sum
+  $(button1).off('click')
+  $(button2).off('click')
   if(userSum > computerSum) {
     alert('Player won')
   }else if(computerSum > userSum){
@@ -128,15 +134,24 @@ $(() => {
           $('#showComputerCards').text('')
           showUsersCards()
           showComputersCards()
+          if(countCardValue(computerCards) < 15){
+            hitMeCheckTwentyOne(computerCards, $hitMeButton, $stayButton)
+            userCardsValue()
+            computerCardsValue()
+            $('#showUserCards').text('')
+            $('#showComputerCards').text('')
+            showUsersCards()
+            showComputersCards()
+          }
         }else {
-          checkHands()
+          checkHands($hitMeButton, $stayButton)
         }
       })
     })
   })
 
 
-//if someone goes over 21, hit me and stay are still available, game should be over then and someone should get a point temporarily until i figure out the money part of this
+//if someone goes over 21, game should be over then and someone should get a point temporarily until i figure out the money part of this
 //A new round button should come on to restart the round when a round is Over
 //Make A have the possibility of having the value of 1 or 11
 })

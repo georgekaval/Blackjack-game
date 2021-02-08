@@ -69,10 +69,20 @@ const userCardsValue = () => {
 const computerCardsValue = () => {
   $('#computervalue').text(` ${countCardValue(computerCards)}`)
 }
-//Make the Start game button shuffle the deck
+//display the users cards to the user
+const showUsersCards = () => {
+  for(let i = 0; i < userCards.length; i++){
+    $('#showUserCards').append(`${userCards[i].card} of ${userCards[i].suit}, `)
+  }
+}
+//display the computers cards to the user
+const showComputersCards = () => {
+  for(let i = 0; i < computerCards.length; i++){
+    $('#showComputerCards').append(`${computerCards[i].card} of ${computerCards[i].suit}, `)
+  }
+}
+
 $(() => {
-
-
   $('#start').one('click', () => {
     //shuffle the deck and make the deal button
     randomizeDeck()
@@ -86,17 +96,11 @@ $(() => {
       $($dealButton).off('click')
       console.log(userCards);
       console.log(computerCards);
-
       //display the users cards and value of their cards
-      //want to make this into a function that can determine how many cards are had, then show their names and value. Want to make a function so it can be called again after I click hit me or when the computer is adding cards to itself.
-
       userCardsValue()
       computerCardsValue()
-
-      const $computerCards = $('<h3>').text(`Computer has these cards ${computerCards[0].card} of ${computerCards[0].suit}, ${computerCards[1].card} of ${computerCards[1].suit}`)
-      $('#computerCardsContainer').append($computerCards)
-      const $userCards =  $('<h3>').text(`User has these cards ${userCards[0].card} of ${userCards[0].suit}, ${userCards[1].card} of ${userCards[1].suit}.`)
-      $('#userCardsContainer').append($userCards)
+      showUsersCards()
+      showComputersCards()
       //make the hit me and stay button
       const $hitMeButton = $('<button>').text('Hit Me')
       $('#user').append($hitMeButton)
@@ -106,11 +110,23 @@ $(() => {
       $($hitMeButton).on('click', () => {
         //gives another card and checks if they went over 21
         hitMeCheckTwentyOne(userCards)
+        userCardsValue()
+        computerCardsValue()
+        $('#showUserCards').text('')
+        $('#showComputerCards').text('')
+        showUsersCards()
+        showComputersCards()
       })
       $($stayButton).on('click', () => {
         //user stays with their cards and the computer gives itself another card if its cards value is less than 15, if not then checkhands has the cards compared to see who the winner is
         if(countCardValue(computerCards) < 15){
           hitMeCheckTwentyOne(computerCards)
+          userCardsValue()
+          computerCardsValue()
+          $('#showUserCards').text('')
+          $('#showComputerCards').text('')
+          showUsersCards()
+          showComputersCards()
         }else {
           checkHands()
         }
@@ -118,9 +134,8 @@ $(() => {
     })
   })
 
-//Make your cards be shown instead of just the value of them to the user
-//computer value is not updating after you click stay
-//user value is not updating when you click hit me
+
+//get the function that displays the users current cards to work
 //if someone goes over 21, hit me and stay are still available, game should be over then and someone should get a point temporarily until i figure out the money part of this
 //A new round button should come on to restart the round when a round is Over
 //Make A have the possibility of having the value of 1 or 11

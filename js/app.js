@@ -35,16 +35,17 @@ const countCardValue = (who) => {
 }
 
 
-//Have the computer check when the hit me button is clicked, if you passed 21 and lost
-const hitMeCheckTwentyOne = (who) => {
+//Have the computer check when the hit me button is clicked, if user or computer passed 21 they get alert they lost and the buttons for hit me and stay are turned off
+const hitMeCheckTwentyOne = (who, button1, button2) => {
   sum = 0
   hitMeBasic(who);
   countCardValue(who)
   if(sum > 21) {
-    alert('Over 21, good try!')
+    alert(`Over 21, ${who} lost!`)
+    $(button1).off('click')
+    $(button2).off('click')
   }
 }
-
 //Have the computer compare the two hands and see who won, if no one hit over 21 already
 const checkHands = () => {
   sum = 0
@@ -109,7 +110,7 @@ $(() => {
 
       $($hitMeButton).on('click', () => {
         //gives another card and checks if they went over 21
-        hitMeCheckTwentyOne(userCards)
+        hitMeCheckTwentyOne(userCards, $hitMeButton, $stayButton)
         userCardsValue()
         computerCardsValue()
         $('#showUserCards').text('')
@@ -120,7 +121,7 @@ $(() => {
       $($stayButton).on('click', () => {
         //user stays with their cards and the computer gives itself another card if its cards value is less than 15, if not then checkhands has the cards compared to see who the winner is
         if(countCardValue(computerCards) < 15){
-          hitMeCheckTwentyOne(computerCards)
+          hitMeCheckTwentyOne(computerCards, $hitMeButton, $stayButton)
           userCardsValue()
           computerCardsValue()
           $('#showUserCards').text('')
@@ -135,7 +136,6 @@ $(() => {
   })
 
 
-//get the function that displays the users current cards to work
 //if someone goes over 21, hit me and stay are still available, game should be over then and someone should get a point temporarily until i figure out the money part of this
 //A new round button should come on to restart the round when a round is Over
 //Make A have the possibility of having the value of 1 or 11

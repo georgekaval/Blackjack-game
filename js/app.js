@@ -166,10 +166,9 @@ $(() => {
       //display the users cards and value of their cards
       showUsersCards()
       showComputersCards()
-      checkAce()
-      userCardsValue()
+      setTimeout(checkAce, 1000)
+      setTimeout(userCardsValue, 1000)
       computerCardsValue()
-
       //make the hit me and stay button
       const $hitMeButton = $('<button>').text('Hit Me')
       $('#user').append($hitMeButton)
@@ -179,13 +178,14 @@ $(() => {
       $($hitMeButton).on('click', () => {
         //gives another card and checks if they went over 21
         hitMeCheckTwentyOne(userCards, $hitMeButton, $stayButton)
-        checkAce()
-        userCardsValue()
-        computerCardsValue()
         $('#showUserCards').text('')
         $('#showComputerCards').text('')
         showUsersCards()
         showComputersCards()
+        checkAce()
+        userCardsValue()
+        computerCardsValue()
+
       })
       $($stayButton).on('click', () => {
         //user stays with their cards and the computer gives itself another card if its cards value is less than 15, if not then checkhands has the cards compared to see who the winner is

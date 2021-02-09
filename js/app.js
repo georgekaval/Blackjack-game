@@ -53,17 +53,21 @@ const tieBet = () => {
   money += 5
   $('#usersCurrentMoney').text(`$${money}`)
 }
-//When someone wins give the option for a new round to be started and all the buttons, cards and card values reset
-// const newRound = () => {
-//   const $newRoundButton = $('<button>').text('New Round')
-//   $('#topButtons').append($newRoundButton)
-//   $($newRoundButton).on('click', () => {
-//     $('#uservalue').text('0')
-//     $('#computervalue').text('0')
-//     usedCards.push(...computerCards.splice(0,computerCards.length))
-//     usedCards.push(...userCards.splice(0,userCards.length))
-//   })
-// }
+// When someone wins give the option for a new round to be started and all the buttons, cards and card values reset
+// const $newRoundButton = $('<button>').text('New Round')
+// $('#topButtons').append($newRoundButton)
+// $($newRoundButton).on('click', () => {
+// })
+
+//reset values on screen and push the cards on the table into a used cards array
+const resetValues = () => {
+  $('#uservalue').text('0')
+  $('#computervalue').text('0')
+  usedCards.push(...computerCards.splice(0,computerCards.length))
+  usedCards.push(...userCards.splice(0,userCards.length))
+  $('#showUserCards').text('')
+  $('#showComputerCards').text('')
+}
 
 //Have the computer check when the hit me button is clicked, if user or computer passed 21 they get alert they lost and the buttons for hit me and stay are turned off
 const hitMeCheckTwentyOne = (who, button1, button2) => {
@@ -74,11 +78,13 @@ const hitMeCheckTwentyOne = (who, button1, button2) => {
     alert(`Over 21, User lost!`)
     $(button1).off('click')
     $(button2).off('click')
+    resetValues()
   }if(sum > 21 && who === computerCards) {
     alert(`Over 21, Computer lost!`)
     winBet()
     $(button1).off('click')
     $(button2).off('click')
+    resetValues()
   }
 }
 //Have the computer compare the two hands and see who won, if no one hit over 21 already
@@ -94,11 +100,14 @@ const checkHands = (button1, button2) => {
   if(userSum > computerSum) {
     alert('Player won')
     winBet()
+    resetValues()
   }else if(computerSum > userSum){
     alert('computer won')
+    resetValues()
   }else {
     alert('You tied!')
     tieBet()
+    resetValues()
   }
 }
 //display the value of the users cards to the user

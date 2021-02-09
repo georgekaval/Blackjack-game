@@ -33,6 +33,14 @@ const countCardValue = (who) => {
     sum += who[i].value
   }return sum
 }
+let money = 200
+//place a bet
+const bet = () => {
+  let bet = 5
+  money -= bet
+  const $money = $('#usersCurrentMoney').text(`$${money}`)
+}
+
 
 
 //Have the computer check when the hit me button is clicked, if user or computer passed 21 they get alert they lost and the buttons for hit me and stay are turned off
@@ -97,6 +105,7 @@ $(() => {
     $('#topButtons').append($dealButton)
 
     $($dealButton).on('click', () => {
+      bet()
       //give each player two cards, turn the start button and the deal button off
       dealCards()
       $('#start').off('click')
@@ -142,6 +151,26 @@ $(() => {
             $('#showComputerCards').text('')
             showUsersCards()
             showComputersCards()
+            if(countCardValue(computerCards) < 15){
+              hitMeCheckTwentyOne(computerCards, $hitMeButton, $stayButton)
+              userCardsValue()
+              computerCardsValue()
+              $('#showUserCards').text('')
+              $('#showComputerCards').text('')
+              showUsersCards()
+              showComputersCards()
+              showComputersCards()
+              if(countCardValue(computerCards) < 15){
+                hitMeCheckTwentyOne(computerCards, $hitMeButton, $stayButton)
+                userCardsValue()
+                computerCardsValue()
+                $('#showUserCards').text('')
+                $('#showComputerCards').text('')
+                showUsersCards()
+                showComputersCards()
+                checkHands($hitMeButton, $stayButton)
+              }
+            }
           }
         }else {
           checkHands($hitMeButton, $stayButton)

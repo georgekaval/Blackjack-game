@@ -11,10 +11,10 @@ const randomizeDeck = () => {
   }
 }
 
-
 //Have the computer choose the first 2 cards for itself and the user
 let computerCards = []
 let userCards = []
+let usedCards = []
 const dealCards = () => {
   computerCards = defineDeck.splice(0,2)
   userCards = defineDeck.splice(0,2)
@@ -33,15 +33,37 @@ const countCardValue = (who) => {
     sum += who[i].value
   }return sum
 }
-let money = 200
+
 //place a bet
+let money = 200
 const bet = () => {
   let bet = 5
   money -= bet
-  const $money = $('#usersCurrentMoney').text(`$${money}`)
+  $('#usersCurrentMoney').text(`$${money}`)
 }
 
+//win bet
+const winBet = () => {
+  money += 10
+  $('#usersCurrentMoney').text(`$${money}`)
+}
 
+//lose bet
+const tieBet = () => {
+  money += 5
+  $('#usersCurrentMoney').text(`$${money}`)
+}
+//When someone wins give the option for a new round to be started and all the buttons, cards and card values reset
+// const newRound = () => {
+//   const $newRoundButton = $('<button>').text('New Round')
+//   $('#topButtons').append($newRoundButton)
+//   $($newRoundButton).on('click', () => {
+//     $('#uservalue').text('0')
+//     $('#computervalue').text('0')
+//     usedCards.push(...computerCards.splice(0,computerCards.length))
+//     usedCards.push(...userCards.splice(0,userCards.length))
+//   })
+// }
 
 //Have the computer check when the hit me button is clicked, if user or computer passed 21 they get alert they lost and the buttons for hit me and stay are turned off
 const hitMeCheckTwentyOne = (who, button1, button2) => {
@@ -54,6 +76,7 @@ const hitMeCheckTwentyOne = (who, button1, button2) => {
     $(button2).off('click')
   }if(sum > 21 && who === computerCards) {
     alert(`Over 21, Computer lost!`)
+    winBet()
     $(button1).off('click')
     $(button2).off('click')
   }
@@ -70,10 +93,12 @@ const checkHands = (button1, button2) => {
   $(button2).off('click')
   if(userSum > computerSum) {
     alert('Player won')
+    winBet()
   }else if(computerSum > userSum){
     alert('computer won')
   }else {
     alert('You tied!')
+    tieBet()
   }
 }
 //display the value of the users cards to the user
@@ -104,6 +129,7 @@ $(() => {
     const $betButton = $('<button>').text('Bet')
     $('#topButtons').append($betButton)
     $($betButton).on('click', () => {
+      //place a bet
       bet()
       const $dealButton = $('<button>').text('Deal')
       $('#topButtons').append($dealButton)
@@ -172,7 +198,7 @@ $(() => {
                 $('#showComputerCards').text('')
                 showUsersCards()
                 showComputersCards()
-                checkHands($hitMeButton, $stayButton)
+                checkHands($hitMeButton, $stayButto)
               }
             }
           }
@@ -184,7 +210,7 @@ $(() => {
     })
   })
 
-//if someone goes over 21, game should be over then and someone should get a point temporarily until i figure out the money part of this
-//A new round button should come on to restart the round when a round is Over
+//A new round button should come on to restart the round when a round is Over, having trouble with my new round function
+//
 //Make A have the possibility of having the value of 1 or 11
 })

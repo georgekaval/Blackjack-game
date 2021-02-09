@@ -101,11 +101,15 @@ $(() => {
   $('#start').one('click', () => {
     //shuffle the deck and make the deal button
     randomizeDeck()
-    const $dealButton = $('<button>').text('Deal')
-    $('#topButtons').append($dealButton)
+    const $betButton = $('<button>').text('Bet')
+    $('#topButtons').append($betButton)
+    $($betButton).on('click', () => {
+      bet()
+      const $dealButton = $('<button>').text('Deal')
+      $('#topButtons').append($dealButton)
+      $($betButton).off('click')
 
     $($dealButton).on('click', () => {
-      bet()
       //give each player two cards, turn the start button and the deal button off
       dealCards()
       $('#start').off('click')
@@ -174,11 +178,11 @@ $(() => {
           }
         }else {
           checkHands($hitMeButton, $stayButton)
-        }
+          }
+        })
       })
     })
   })
-
 
 //if someone goes over 21, game should be over then and someone should get a point temporarily until i figure out the money part of this
 //A new round button should come on to restart the round when a round is Over

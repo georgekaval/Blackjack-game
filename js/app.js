@@ -13,12 +13,12 @@ const randomizeDeck = () => {
 }
 
 //Have the computer choose the first 2 cards for itself and the user
-let computerCards = []
-let userCards = []
+let dealerCards = []
+let playerCards = []
 let usedCards = []
 const dealCards = () => {
-  computerCards = defineDeck.splice(0,2)
-  userCards = defineDeck.splice(0,2)
+  dealerCards = defineDeck.splice(0,2)
+  playerCards = defineDeck.splice(0,2)
 }
 
 //Choose another card, this is called in the hitMeCheckTwentyOne function
@@ -34,17 +34,51 @@ const countCardValue = (who) => {
     sum += who[i].value
   }return sum
 }
-//check Ace
-const checkAce = () => {
-  for(let i = 0; i < userCards.length; i ++){
-      if(userCards[i].card === 'A'){
-        const userAnswer = prompt('Would you like your Ace to be counted as 1 or 11?', '1 or 11')
-        if(userAnswer === '11'){
-          userCards[i].value = 11
-        }else if(userAnswer === '1'){
-          userCards[i].value = 1
-        }else if(userAnswer !== '1' && userAnswer !== '11'){
-          const userAnswer = prompt('Would you like your Ace to be counted as 1 or 11?', '1/11')
+//check Ace for player on deal
+const checkPlayerAceDeal = () => {
+      if(playerCards[0].card === 'A'){
+        const playerAnswer = prompt('Would you like your Ace to be counted as 1 or 11?', '1 or 11')
+        if(playerAnswer === '11'){
+          playerCards[0].value = 11
+        }else if(playerAnswer === '1'){
+          playerCards[0].value = 1
+        }else if(playerAnswer !== '1' && playerAnswer !== '11'){
+          const playerAnswer = prompt('Would you like your Ace to be counted as 1 or 11?', '1/11')
+        }
+      }
+      if(playerCards[1].card === 'A'){
+        const playerAnswer = prompt('Would you like your Ace to be counted as 1 or 11?', '1 or 11')
+        if(playerAnswer === '11'){
+          playerCards[1].value = 11
+        }else if(playerAnswer === '1'){
+          playerCards[1].value = 1
+        }else if(playerAnswer !== '1' && playerAnswer !== '11'){
+          const playerAnswer = prompt('Would you like your Ace to be counted as 1 or 11?', '1/11')
+        }
+      }
+    }
+//check player ace on hit me
+const checkPlayerAceHitMe = () => {
+  let newCard = playerCards.length - 1
+  if(playerCards[newCard].card === 'A'){
+    const playerAnswer = prompt('Would you like your Ace to be counted as 1 or 11?', '1 or 11')
+    if(playerAnswer === '11'){
+      playerCards[newCard].value = 11
+    }else if(playerAnswer === '1'){
+      playerCards[newCard].value = 1
+    }else if(playerAnswer !== '1' && playerAnswer !== '11'){
+      const playerAnswer = prompt('Would you like your Ace to be counted as 1 or 11?', '1/11')
+    }
+  }
+}
+
+
+//check ace for dealer
+const checkDealerAce = () => {
+  for(let i = 0; i < dealerCards.length; i ++){
+      if(dealerCards[i].card === 'A'){
+        if(countCardValue(dealerCards <10)){
+          dealerCards[i].value = 11
         }
       }
     }
@@ -54,30 +88,30 @@ let money = 200
 const bet = () => {
   let bet = 5
   money -= bet
-  $('#usersCurrentMoney').text(`$${money}`)
+  $('#playersCurrentMoney').text(`$${money}`)
 }
 
 //win bet
 const winBet = () => {
   money += 10
-  $('#usersCurrentMoney').text(`$${money}`)
+  $('#playersCurrentMoney').text(`$${money}`)
 }
 
 //lose bet
 const tieBet = () => {
   money += 5
-  $('#usersCurrentMoney').text(`$${money}`)
+  $('#playersCurrentMoney').text(`$${money}`)
 }
 
 
 //reset values on screen and push the cards on the table into a used cards array
 const resetValues = () => {
-  $('#uservalue').text('0')
-  $('#computervalue').text('0')
-  usedCards.push(...computerCards.splice(0,computerCards.length))
-  usedCards.push(...userCards.splice(0,userCards.length))
-  $('#showUserCards').text('')
-  $('#showComputerCards').text('')
+  $('#playervalue').text('0')
+  $('#dealervalue').text('0')
+  usedCards.push(...dealerCards.splice(0,dealerCards.length))
+  usedCards.push(...playerCards.splice(0,playerCards.length))
+  $('#showPlayerCards').text('')
+  $('#showDealerCards').text('')
 }
 
 //Have the computer check when the hit me button is clicked, if user or computer passed 21 they get alert they lost and the buttons for hit me and stay are turned off
@@ -85,13 +119,13 @@ const hitMeCheckTwentyOne = (who, button1, button2) => {
   sum = 0
   hitMeBasic(who);
   countCardValue(who)
-  if(sum > 21 && who === userCards) {
-    alert(`Over 21, User busts!`)
+  if(sum > 21 && who === playerCards) {
+    alert(`Over 21, Player busts!`)
     $(button1).off('click')
     $(button2).off('click')
     resetValues()
-  }if(sum > 21 && who === computerCards) {
-    alert(`Over 21, Computer busts!`)
+  }if(sum > 21 && who === dealerCards) {
+    alert(`Over 21, Dealer busts!`)
     winBet()
     $(button1).off('click')
     $(button2).off('click')
@@ -101,19 +135,19 @@ const hitMeCheckTwentyOne = (who, button1, button2) => {
 //Have the computer compare the two hands and see who won, if no one hit over 21 already
 const checkHands = (button1, button2) => {
   sum = 0
-  countCardValue(userCards)
-  userSum = sum
+  countCardValue(playerCards)
+  playerSum = sum
   sum = 0
-  countCardValue(computerCards)
-  computerSum = sum
+  countCardValue(dealerCards)
+  dealerSum = sum
   $(button1).off('click')
   $(button2).off('click')
-  if(userSum > computerSum) {
+  if(playerSum > dealerSum) {
     alert('Player won')
     winBet()
     resetValues()
-  }else if(computerSum > userSum){
-    alert('computer won')
+  }else if(dealerSum > playerSum){
+    alert('Dealer won')
     resetValues()
   }else {
     alert('Push!')
@@ -122,23 +156,23 @@ const checkHands = (button1, button2) => {
   }
 }
 //display the value of the users cards to the user
-const userCardsValue = () => {
-  $('#uservalue').text(` ${countCardValue(userCards)}`)
+const playerCardsValue = () => {
+  $('#playervalue').text(` ${countCardValue(playerCards)}`)
 }
 //display the value of the computers cards to the user
-const computerCardsValue = () => {
-  $('#computervalue').text(` ${countCardValue(computerCards)}`)
+const dealerCardsValue = () => {
+  $('#dealervalue').text(` ${countCardValue(dealerCards)}`)
 }
 //display the users cards to the user
-const showUsersCards = () => {
-  for(let i = 0; i < userCards.length; i++){
-    $('#showUserCards').append(`${userCards[i].card} of ${userCards[i].suit}, `)
+const showPlayersCards = () => {
+  for(let i = 0; i < playerCards.length; i++){
+    $('#showPlayerCards').append(`${playerCards[i].card} of ${playerCards[i].suit}, `)
   }
 }
 //display the computers cards to the user
-const showComputersCards = () => {
-  for(let i = 0; i < computerCards.length; i++){
-    $('#showComputerCards').append(`${computerCards[i].card} of ${computerCards[i].suit}, `)
+const showDealersCards = () => {
+  for(let i = 0; i < dealerCards.length; i++){
+    $('#showDealerCards').append(`${dealerCards[i].card} of ${dealerCards[i].suit}, `)
   }
 }
 
@@ -161,67 +195,67 @@ $(() => {
       dealCards()
       $('#start').off('click')
       $($dealButton).off('click')
-      console.log(userCards);
-      console.log(computerCards);
+      console.log(playerCards);
+      console.log(dealerCards);
       //display the users cards and value of their cards
-      showUsersCards()
-      showComputersCards()
-      setTimeout(checkAce, 1000)
-      setTimeout(userCardsValue, 1000)
-      computerCardsValue()
+      showPlayersCards()
+      showDealersCards()
+      setTimeout(checkPlayerAceDeal, 700)
+      setTimeout(playerCardsValue, 700)
+      dealerCardsValue()
       //make the hit me and stay button
       const $hitMeButton = $('<button>').text('Hit Me')
-      $('#user').append($hitMeButton)
+      $('#player').append($hitMeButton)
       const $stayButton = $('<button>').text('Stay')
-      $('#user').append($stayButton)
+      $('#player').append($stayButton)
 
       $($hitMeButton).on('click', () => {
         //gives another card and checks if they went over 21
-        hitMeCheckTwentyOne(userCards, $hitMeButton, $stayButton)
-        $('#showUserCards').text('')
-        $('#showComputerCards').text('')
-        showUsersCards()
-        showComputersCards()
-        checkAce()
-        userCardsValue()
-        computerCardsValue()
+        hitMeCheckTwentyOne(playerCards, $hitMeButton, $stayButton)
+        $('#showPlayerCards').text('')
+        $('#showDealerCards').text('')
+        showPlayersCards()
+        showDealersCards()
+        setTimeout(checkPlayerAceHitMe, 700)
+        setTimeout(playerCardsValue, 700)
+        dealerCardsValue()
 
       })
       $($stayButton).on('click', () => {
         //user stays with their cards and the computer gives itself another card if its cards value is less than 15, if not then checkhands has the cards compared to see who the winner is
-        if(countCardValue(computerCards) < 15){
-          hitMeCheckTwentyOne(computerCards, $hitMeButton, $stayButton)
-          userCardsValue()
-          computerCardsValue()
-          $('#showUserCards').text('')
-          $('#showComputerCards').text('')
-          showUsersCards()
-          showComputersCards()
-          if(countCardValue(computerCards) < 15){
-            hitMeCheckTwentyOne(computerCards, $hitMeButton, $stayButton)
-            userCardsValue()
-            computerCardsValue()
-            $('#showUserCards').text('')
-            $('#showComputerCards').text('')
-            showUsersCards()
-            showComputersCards()
-            if(countCardValue(computerCards) < 15){
-              hitMeCheckTwentyOne(computerCards, $hitMeButton, $stayButton)
-              userCardsValue()
-              computerCardsValue()
-              $('#showUserCards').text('')
-              $('#showComputerCards').text('')
-              showUsersCards()
-              showComputersCards()
-              showComputersCards()
-              if(countCardValue(computerCards) < 15){
-                hitMeCheckTwentyOne(computerCards, $hitMeButton, $stayButton)
-                userCardsValue()
-                computerCardsValue()
-                $('#showUserCards').text('')
-                $('#showComputerCards').text('')
-                showUsersCards()
-                showComputersCards()
+        if(countCardValue(dealerCards) < 15){
+          hitMeCheckTwentyOne(dealerCards, $hitMeButton, $stayButton)
+          playerCardsValue()
+          dealerCardsValue()
+          $('#showPlayerCards').text('')
+          $('#showDealerCards').text('')
+          showPlayersCards()
+          showDealersCards()
+          if(countCardValue(dealerCards) < 15){
+            hitMeCheckTwentyOne(dealerCards, $hitMeButton, $stayButton)
+            playerCardsValue()
+            dealerCardsValue()
+            $('#showPlayerCards').text('')
+            $('#showDealerCards').text('')
+            showPlayersCards()
+            showDealersCards()
+            if(countCardValue(dealerCards) < 15){
+              hitMeCheckTwentyOne(dealerCards, $hitMeButton, $stayButton)
+              playerCardsValue()
+              dealerCardsValue()
+              $('#showPlayerCards').text('')
+              $('#showDealerCards').text('')
+              showPlayersCards()
+              showDealersCards()
+
+              if(countCardValue(dealerCards) < 15){
+                hitMeCheckTwentyOne(dealerCards, $hitMeButton, $stayButton)
+                playerCardsValue()
+                dealerCardsValue()
+                $('#showPlayerCards').text('')
+                $('#showDealerCards').text('')
+                showPlayersCards()
+                showDealersCards()
                 checkHands($hitMeButton, $stayButton)
               }
             }
@@ -236,5 +270,6 @@ $(() => {
 //I should not have to click stay twice for the computer to finish its turn, if the computer has under 15, the first stay does a hitme and does not do a checkHands. if the computer has over 15 when I stay it seems to work fine.
 //A new round button should come on to restart the round when a round is Over, having trouble with my new round function
 //
-//Make A have the possibility of having the value of 1 or 11
+//Make A have the possibility of having the value of 1 or 11 for the computer
+//If player gets 21 on the beginning 2 cards, they should automatically win unless the dealer also has a 21 with the first 2 cards.
 })

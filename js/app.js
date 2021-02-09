@@ -1,4 +1,5 @@
 //Make an array with all the cards as objects
+
 const defineDeck =[
   {card: 'A', value: 1, suit: 'hearts'}, {card: 'A', value: 1, suit: 'spades'}, {card: 'A', value: 1, suit: 'diamonds'}, {card: 'A', value: 1, suit: 'clubs'}, {card: 2, value: 2, suit: 'hearts'}, {card: 2, value: 2, suit: 'spades'}, {card: 2, value: 2, suit: 'diamonds'}, {card: 2, value: 2, suit: 'clubs'}, {card: 3, value: 3, suit: 'hearts'}, {card: 3, value: 3, suit: 'spades'}, {card: 3, value: 3, suit: 'diamonds'}, {card: 3, value: 3, suit: 'clubs'}, {card: 4, value: 4, suit: 'hearts'}, {card: 4, value: 4, suit: 'spades'}, {card: 4, value: 4, suit: 'diamonds'}, {card: 4, value: 4, suit: 'clubs'}, {card: 5, value: 5, suit: 'hearts'}, {card: 5, value: 5, suit: 'spades'}, {card: 5, value: 5, suit: 'diamonds'}, {card: 5, value: 5, suit: 'clubs'}, {card: 6, value: 6, suit: 'hearts'}, {card: 6, value: 6, suit: 'spades'}, {card: 6, value: 6, suit: 'diamonds'}, {card: 6, value: 6, suit: 'clubs'}, {card: 7, value: 7, suit: 'hearts'}, {card: 7, value: 7, suit: 'spades'}, {card: 7, value: 7, suit: 'diamonds'}, {card: 7, value: 7, suit: 'clubs'}, {card: 8, value: 8, suit: 'hearts'}, {card: 8, value: 8, suit: 'spades'}, {card: 8, value: 8, suit: 'diamonds'}, {card: 8, value: 8, suit: 'clubs'}, {card: 9, value: 9, suit: 'hearts'}, {card: 9, value: 9, suit: 'spades'}, {card: 9, value: 9, suit: 'diamonds'}, {card: 9, value: 9, suit: 'clubs'}, {card: 10, value: 10, suit: 'hearts'}, {card: 10, value: 10, suit: 'spades'}, {card: 10, value: 10, suit: 'diamonds'}, {card: 10, value: 10, suit: 'clubs'}, {card: 'J', value: 10, suit: 'hearts'}, {card: 'J', value: 10, suit: 'spades'}, {card: 'J', value: 10, suit: 'diamonds'}, {card: 'J', value: 10, suit: 'clubs'}, {card: 'Q', value: 10, suit: 'hearts'}, {card: 'Q', value: 10, suit: 'spades'}, {card: 'Q', value: 10, suit: 'diamonds'}, {card: 'Q', value: 10, suit: 'clubs'}, {card: 'K', value: 10, suit: 'hearts'}, {card: 'K', value: 10, suit: 'spades'}, {card: 'K', value: 10, suit: 'diamonds'}, {card: 'K', value: 10, suit: 'clubs'}
 ]
@@ -33,7 +34,21 @@ const countCardValue = (who) => {
     sum += who[i].value
   }return sum
 }
-
+//check Ace
+const checkAce = () => {
+  for(let i = 0; i < userCards.length; i ++){
+      if(userCards[i].card === 'A'){
+        const userAnswer = prompt('Would you like your Ace to be counted as 1 or 11?', '1 or 11')
+        if(userAnswer === '11'){
+          userCards[i].value = 11
+        }else if(userAnswer === '1'){
+          userCards[i].value = 1
+        }else if(userAnswer !== '1' && userAnswer !== '11'){
+          const userAnswer = prompt('Would you like your Ace to be counted as 1 or 11?', '1/11')
+        }
+      }
+    }
+}
 //place a bet
 let money = 200
 const bet = () => {
@@ -53,11 +68,7 @@ const tieBet = () => {
   money += 5
   $('#usersCurrentMoney').text(`$${money}`)
 }
-// When someone wins give the option for a new round to be started and all the buttons, cards and card values reset
-// const $newRoundButton = $('<button>').text('New Round')
-// $('#topButtons').append($newRoundButton)
-// $($newRoundButton).on('click', () => {
-// })
+
 
 //reset values on screen and push the cards on the table into a used cards array
 const resetValues = () => {
@@ -75,12 +86,12 @@ const hitMeCheckTwentyOne = (who, button1, button2) => {
   hitMeBasic(who);
   countCardValue(who)
   if(sum > 21 && who === userCards) {
-    alert(`Over 21, User lost!`)
+    alert(`Over 21, User busts!`)
     $(button1).off('click')
     $(button2).off('click')
     resetValues()
   }if(sum > 21 && who === computerCards) {
-    alert(`Over 21, Computer lost!`)
+    alert(`Over 21, Computer busts!`)
     winBet()
     $(button1).off('click')
     $(button2).off('click')
@@ -105,7 +116,7 @@ const checkHands = (button1, button2) => {
     alert('computer won')
     resetValues()
   }else {
-    alert('You tied!')
+    alert('Push!')
     tieBet()
     resetValues()
   }
@@ -137,6 +148,7 @@ $(() => {
     randomizeDeck()
     const $betButton = $('<button>').text('Bet')
     $('#topButtons').append($betButton)
+
     $($betButton).on('click', () => {
       //place a bet
       bet()
@@ -152,10 +164,12 @@ $(() => {
       console.log(userCards);
       console.log(computerCards);
       //display the users cards and value of their cards
-      userCardsValue()
-      computerCardsValue()
       showUsersCards()
       showComputersCards()
+      checkAce()
+      userCardsValue()
+      computerCardsValue()
+
       //make the hit me and stay button
       const $hitMeButton = $('<button>').text('Hit Me')
       $('#user').append($hitMeButton)
@@ -165,6 +179,7 @@ $(() => {
       $($hitMeButton).on('click', () => {
         //gives another card and checks if they went over 21
         hitMeCheckTwentyOne(userCards, $hitMeButton, $stayButton)
+        checkAce()
         userCardsValue()
         computerCardsValue()
         $('#showUserCards').text('')
@@ -207,7 +222,7 @@ $(() => {
                 $('#showComputerCards').text('')
                 showUsersCards()
                 showComputersCards()
-                checkHands($hitMeButton, $stayButto)
+                checkHands($hitMeButton, $stayButton)
               }
             }
           }
@@ -218,7 +233,7 @@ $(() => {
       })
     })
   })
-
+//I should not have to click stay twice for the computer to finish its turn, if the computer has under 15, the first stay does a hitme and does not do a checkHands. if the computer has over 15 when I stay it seems to work fine.
 //A new round button should come on to restart the round when a round is Over, having trouble with my new round function
 //
 //Make A have the possibility of having the value of 1 or 11

@@ -39,11 +39,11 @@ const checkPlayerAce = () => {
   for(let i = 0; i < playerCards.length; i ++){
       if(playerCards[i].card === 'A'){
         const playerAnswer = prompt('Would you like your Ace to be counted as 1 or 11?', '1 or 11')
-        if(playerAnswer === '11'){
+        if(playerAnswer.trim() === '11'){
           playerCards[i].value = 11
-        }else if(playerAnswer === '1'){
+        }else if(playerAnswer.trim() === '1'){
           playerCards[i].value = 1
-        }else if(playerAnswer !== '1' && playerAnswer !== '11'){
+        }else if(playerAnswer.trim() !== '1' && playerAnswer.trim() !== '11'){
           const playerAnswer = prompt('Would you like your Ace to be counted as 1 or 11?', '1/11')
         }
       }
@@ -187,6 +187,7 @@ const showDealersCards = () => {
 $(() => {
   $('#start').on('click', () => {
     //shuffle the deck and make the deal button
+
     randomizeDeck()
     const $betButton = $('<button>').text('Bet')
     $('#topButtons').append($betButton)
@@ -229,11 +230,8 @@ $(() => {
         $($hitMeButton).remove()
         checkDealerAce()
         if(countCardValue(dealerCards) < 15){
-          playerCardsValue()
           dealerCardsValue()
-          $('#showPlayerCards').text('')
           $('#showDealerCards').text('')
-          showPlayersCards()
           showDealersCards()
           hitMeCheckTwentyOne(dealerCards, $hitMeButton, $stayButton)
           checkDealerAce()
@@ -242,29 +240,20 @@ $(() => {
           dealerCardsValue()
           if(countCardValue(dealerCards) < 15){
             hitMeCheckTwentyOne(dealerCards, $hitMeButton, $stayButton)
-            playerCardsValue()
             dealerCardsValue()
-            $('#showPlayerCards').text('')
             $('#showDealerCards').text('')
-            showPlayersCards()
             showDealersCards()
             checkDealerAce()
             if(countCardValue(dealerCards) < 15){
               hitMeCheckTwentyOne(dealerCards, $hitMeButton, $stayButton)
-              playerCardsValue()
               dealerCardsValue()
-              $('#showPlayerCards').text('')
               $('#showDealerCards').text('')
-              showPlayersCards()
               showDealersCards()
               checkDealerAce()
               if(countCardValue(dealerCards) < 15){
                 hitMeCheckTwentyOne(dealerCards, $hitMeButton, $stayButton)
-                playerCardsValue()
                 dealerCardsValue()
-                $('#showPlayerCards').text('')
                 $('#showDealerCards').text('')
-                showPlayersCards()
                 showDealersCards()
                 if(countCardValue(dealerCards) > 15){
                   showDealersCards()
@@ -273,14 +262,21 @@ $(() => {
               }
             }
           }
-        }if(countCardValue(dealerCards) > 15){
-            showDealersCards()
+        }if(countCardValue(dealerCards) >= 15){
             checkHands($hitMeButton, $stayButton)
         }
       })
     })
   })
+  if(money <= 185){
+    alert('You ran out of money!')
+    $($betButton).remove()
+    $('#start').show().text('New game')
+    money = 200
+  }
 })
+
+
     $('#readRules').on('click', () => {
       const $rulesTitle = $('<h2>').text('Rules')
       $('#rules').append($rulesTitle)

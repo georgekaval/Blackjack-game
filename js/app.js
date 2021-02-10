@@ -62,6 +62,7 @@ const checkDealerAce = () => {
 }
 //place a bet
 let money = 200
+
 const bet = () => {
   let bet = 5
   money -= bet
@@ -138,7 +139,7 @@ const checkHands = (button1, button2) => {
   }else if(dealerSum > playerSum && dealerSum < 22){
     alert(`Dealer has ${countCardValue(dealerCards)}, Player has ${countCardValue(playerCards)}.  Dealer won!`)
     resetValues()
-  }else {
+  }else if(dealerSum === playerSum){
     alert(`Player has ${countCardValue(playerCards)} and Dealer has ${countCardValue(dealerCards)}.  Push!`)
     tieBet()
     resetValues()
@@ -272,7 +273,7 @@ $(() => {
               }
             }
           }
-          }else {
+        }if(countCardValue(dealerCards) > 15){
             showDealersCards()
             checkHands($hitMeButton, $stayButton)
         }
@@ -280,8 +281,13 @@ $(() => {
     })
   })
 })
+    $('#readRules').on('click', () => {
+      const $rulesTitle = $('<h2>').text('Rules')
+      $('#rules').append($rulesTitle)
+      const $rules = $('<p>').html('Player attempts to beat the dealer by getting a count as close to 21 as possible, without going over 21. <br/> An ace card can be worth 1 or 11. Face cards are worth 10 and any other cards are worth the value shown on them. <br/> Before the cards are delt, player places a bet of $5. <br/> Player and Dealer recieve 2 cards each. The player then has the ability to call Hit Me, which gives the Player another call if they would like. If the Player is satisfied with their hand, they stay. <br/>  The Dealer checks their hand, if they have less than 15 count, then they will automatically call Hit Me. If no one has passed 21, then the hands are compared and the highest count wins the round! <br/> Player will start with $200. Player loses if he loses all the money, and wins if $400 is reached.')
+      $('#rules').append($rules)
+    })
 //I should not have to click stay twice for the computer to finish its turn, if the computer has under 15, the first stay does a hitme and does not do a checkHands. if the computer has over 15 when I stay it seems to work fine.
-//A new round button should come on to restart the round when a round is Over, having trouble with my new round function
 //If player gets 21 on the beginning 2 cards, they should automatically win unless the dealer also has a 21 with the first 2 cards.
       //By en:User:Cburnett - Own work  This W3C-unspecified vector image was created with Inkscape., CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=1843189
 })

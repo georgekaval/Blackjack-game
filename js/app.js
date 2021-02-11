@@ -108,7 +108,7 @@ const hitMeCheckTwentyOne = (who, button1, button2) => {
     $(button1).remove()
     $(button2).remove()
     setTimeout(resetValues,1000)
-    $('#start').show().text('New round')
+    $('#playButton').show().text('New round')
   }if(sum > 21 && who === dealerCards) {
     showDealersCards()
     const tellDealerBust = () => {
@@ -119,7 +119,7 @@ const hitMeCheckTwentyOne = (who, button1, button2) => {
     $(button1).remove()
     $(button2).remove()
     setTimeout(resetValues,1000)
-    $('#start').show().text('New round')
+    $('#playButton').show().text('New round')
   }
 }
 //Have the computer compare the two hands and see who won, if no one hit over 21 already
@@ -145,7 +145,7 @@ const checkHands = (button1, button2) => {
     tieBet()
     resetValues()
   }
-  $('#start').show().text('New round')
+  $('#playButton').show().text('New round')
 }
 //display the value of the users cards to the user
 const playerCardsValue = () => {

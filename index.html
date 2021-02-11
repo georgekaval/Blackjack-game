@@ -11,35 +11,38 @@
   </head>
   <body>
     <div id="header">
-      <img src="images/Blackjack-logo.png" alt="">
+      <img id="aces"src="images/aces.png" alt="">
     </div>
     <div id="top">
     </div>
     <div id="dealer">
-      <div id="dealerCardsContainer">
-        <h2>Dealer</h2>
-          <h3 id="showDealerCards"></h3>
-      </div>
-      <div id="dealerCurrentValue">
-        <h2>Dealer Cards Total</h2>
-          <h3 id="dealervalue"></h3>
+      <div>
+        <h3 id="nameDealer">Dealer</h3>
       </div>
     </div>
     <div id="dealSpace">
-      
-    </div>
-    <div id="player">
-      <div id="playerCurrentValue">
-        <h2>Player Cards Total</h2>
-          <h3 id="playervalue">0</h3>
+      <div id="dealerCardsContainer">
+        <div id="dealerCurrentValue">
+          <h3>Dealer Cards Total</h3>
+            <h4 id="dealervalue"></h4>
+        </div>
+        <h4 id="showDealerCards"></h4>
       </div>
       <div id="playerCardsContainer">
-        <h3 id="showPlayerCards"></h3>
-        <h2>Player</h2>
+        <h4 id="showPlayerCards"></h4>
+        <div id="playerCurrentValue">
+          <h3>Player Cards Total</h3>
+            <h4 id="playervalue">0</h4>
+        </div>
+      </div>
+    </div>
+    <div id="player">
+      <div>
+        <h3 id="namePlayer">Player</h3>
       </div>
       <div id="playerMoney">
-        <h2>Player's Money</h2>
-          <h3 id="playersCurrentMoney">$200</h3>
+        <h3>Player's Money</h3>
+          <h4 id="playersCurrentMoney">$200</h4>
       </div>
     </div>
     <div id="rules">

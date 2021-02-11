@@ -1,0 +1,22 @@
+body {
+  background: green;
+
+}
+#player {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+#header {
+  text-align: center;
+  text-decoration: underline;
+}
+.card{
+  width: 100px;
+  height: 150px;
+}
+#dealer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}

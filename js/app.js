@@ -1,7 +1,8 @@
 //Make an array with all the cards as objects
-//to add card images add a img tag using jquery, then concatenate the file path and the image name.
+
+// $('#showPlayerCards').append(defineDeck[0].img)
 const defineDeck =[
-  {card: 'A', value: 1, suit: 'hearts'}, {card: 'A', value: 1, suit: 'spades'}, {card: 'A', value: 1, suit: 'diamonds'}, {card: 'A', value: 1, suit: 'clubs'}, {card: 2, value: 2, suit: 'hearts'}, {card: 2, value: 2, suit: 'spades'}, {card: 2, value: 2, suit: 'diamonds'}, {card: 2, value: 2, suit: 'clubs'}, {card: 3, value: 3, suit: 'hearts'}, {card: 3, value: 3, suit: 'spades'}, {card: 3, value: 3, suit: 'diamonds'}, {card: 3, value: 3, suit: 'clubs'}, {card: 4, value: 4, suit: 'hearts'}, {card: 4, value: 4, suit: 'spades'}, {card: 4, value: 4, suit: 'diamonds'}, {card: 4, value: 4, suit: 'clubs'}, {card: 5, value: 5, suit: 'hearts'}, {card: 5, value: 5, suit: 'spades'}, {card: 5, value: 5, suit: 'diamonds'}, {card: 5, value: 5, suit: 'clubs'}, {card: 6, value: 6, suit: 'hearts'}, {card: 6, value: 6, suit: 'spades'}, {card: 6, value: 6, suit: 'diamonds'}, {card: 6, value: 6, suit: 'clubs'}, {card: 7, value: 7, suit: 'hearts'}, {card: 7, value: 7, suit: 'spades'}, {card: 7, value: 7, suit: 'diamonds'}, {card: 7, value: 7, suit: 'clubs'}, {card: 8, value: 8, suit: 'hearts'}, {card: 8, value: 8, suit: 'spades'}, {card: 8, value: 8, suit: 'diamonds'}, {card: 8, value: 8, suit: 'clubs'}, {card: 9, value: 9, suit: 'hearts'}, {card: 9, value: 9, suit: 'spades'}, {card: 9, value: 9, suit: 'diamonds'}, {card: 9, value: 9, suit: 'clubs'}, {card: 10, value: 10, suit: 'hearts'}, {card: 10, value: 10, suit: 'spades'}, {card: 10, value: 10, suit: 'diamonds'}, {card: 10, value: 10, suit: 'clubs'}, {card: 'J', value: 10, suit: 'hearts'}, {card: 'J', value: 10, suit: 'spades'}, {card: 'J', value: 10, suit: 'diamonds'}, {card: 'J', value: 10, suit: 'clubs'}, {card: 'Q', value: 10, suit: 'hearts'}, {card: 'Q', value: 10, suit: 'spades'}, {card: 'Q', value: 10, suit: 'diamonds'}, {card: 'Q', value: 10, suit: 'clubs'}, {card: 'K', value: 10, suit: 'hearts'}, {card: 'K', value: 10, suit: 'spades'}, {card: 'K', value: 10, suit: 'diamonds'}, {card: 'K', value: 10, suit: 'clubs'}
+  {card: 'A', value: 1, suit: 'hearts', img: $('<img src="images/a_heart.png" />').addClass('card')}, {card: 'A', value: 1, suit: 'spades', img: $('<img src="images/A_spade.png" />').addClass('card')}, {card: 'A', value: 1, suit: 'diamonds', img: $('<img src="images/A_diamond.png" />').addClass('card')}, {card: 'A', value: 1, suit: 'clubs', img: $('<img src="images/A_club.png" />').addClass('card')}, {card: 2, value: 2, suit: 'hearts', img: $('<img src="images/two_heart.png" />').addClass('card')}, {card: 2, value: 2, suit: 'spades', img: $('<img src="images/two_spade.png" />').addClass('card')}, {card: 2, value: 2, suit: 'diamonds', img: $('<img src="images/two_diamond.png" />').addClass('card')}, {card: 2, value: 2, suit: 'clubs', img: $('<img src="images/two_club.png" />').addClass('card')}, {card: 3, value: 3, suit: 'hearts', img: $('<img src="images/three_heart.png" />').addClass('card')}, {card: 3, value: 3, suit: 'spades', img: $('<img src="images/three_spade.png" />').addClass('card')}, {card: 3, value: 3, suit: 'diamonds', img: $('<img src="images/three_diamond.png" />').addClass('card')}, {card: 3, value: 3, suit: 'clubs', img: $('<img src="images/three_club.png" />').addClass('card')}, {card: 4, value: 4, suit: 'hearts', img: $('<img src="images/four_heart.png" />').addClass('card')}, {card: 4, value: 4, suit: 'spades', img: $('<img src="images/four_spade.png" />').addClass('card')}, {card: 4, value: 4, suit: 'diamonds', img: $('<img src="images/four_diamond.png" />').addClass('card')}, {card: 4, value: 4, suit: 'clubs', img: $('<img src="images/four_club.png" />').addClass('card')}, {card: 5, value: 5, suit: 'hearts', img: $('<img src="images/five_heart.png" />').addClass('card')}, {card: 5, value: 5, suit: 'spades', img: $('<img src="images/five_spade.png" />').addClass('card')}, {card: 5, value: 5, suit: 'diamonds', img: $('<img src="images/five_diamond.png" />').addClass('card')}, {card: 5, value: 5, suit: 'clubs', img: $('<img src="images/five_club.png" />').addClass('card')}, {card: 6, value: 6, suit: 'hearts', img: $('<img src="images/six_heart.png" />').addClass('card')}, {card: 6, value: 6, suit: 'spades', img: $('<img src="images/six_spade.png" />').addClass('card')}, {card: 6, value: 6, suit: 'diamonds', img: $('<img src="images/six_diamond.png" />').addClass('card')}, {card: 6, value: 6, suit: 'clubs', img: $('<img src="images/six_club.png" />').addClass('card')}, {card: 7, value: 7, suit: 'hearts', img: $('<img src="images/seven_heart.png" />').addClass('card')}, {card: 7, value: 7, suit: 'spades', img: $('<img src="images/seven_spade.png" />').addClass('card')}, {card: 7, value: 7, suit: 'diamonds', img: $('<img src="images/seven_diamond.png" />').addClass('card')}, {card: 7, value: 7, suit: 'clubs', img: $('<img src="images/seven_club.png" />').addClass('card')}, {card: 8, value: 8, suit: 'hearts', img: $('<img src="images/eight_heart.png" />').addClass('card')}, {card: 8, value: 8, suit: 'spades', img: $('<img src="images/eight_spade.png" />').addClass('card')}, {card: 8, value: 8, suit: 'diamonds', img: $('<img src="images/eight_diamond.png" />').addClass('card')}, {card: 8, value: 8, suit: 'clubs', img: $('<img src="images/eight_club.png" />').addClass('card')}, {card: 9, value: 9, suit: 'hearts', img: $('<img src="images/nine_heart.png" />').addClass('card')}, {card: 9, value: 9, suit: 'spades', img: $('<img src="images/nine_spade.png" />').addClass('card')}, {card: 9, value: 9, suit: 'diamonds', img: $('<img src="images/nine_diamond.png" />').addClass('card')}, {card: 9, value: 9, suit: 'clubs', img: $('<img src="images/nine_club.png" />').addClass('card')}, {card: 10, value: 10, suit: 'hearts', img: $('<img src="images/ten_heart.png" />').addClass('card')}, {card: 10, value: 10, suit: 'spades', img: $('<img src="images/ten_spade.png" />').addClass('card')}, {card: 10, value: 10, suit: 'diamonds', img: $('<img src="images/ten_diamond.png" />').addClass('card')}, {card: 10, value: 10, suit: 'clubs', img: $('<img src="images/ten_club.png" />').addClass('card')}, {card: 'J', value: 10, suit: 'hearts', img: $('<img src="images/JH.png" />').addClass('card')}, {card: 'J', value: 10, suit: 'spades', img: $('<img src="images/JS.png" />').addClass('card')}, {card: 'J', value: 10, suit: 'diamonds', img: $('<img src="images/JD.png" />').addClass('card')}, {card: 'J', value: 10, suit: 'clubs', img: $('<img src="images/JC.png" />').addClass('card')}, {card: 'Q', value: 10, suit: 'hearts', img: $('<img src="images/QH.png" />').addClass('card')}, {card: 'Q', value: 10, suit: 'spades', img: $('<img src="images/QS.png" />').addClass('card')}, {card: 'Q', value: 10, suit: 'diamonds', img: $('<img src="images/QD.png" />').addClass('card')}, {card: 'Q', value: 10, suit: 'clubs', img: $('<img src="images/QC.png" />').addClass('card')}, {card: 'K', value: 10, suit: 'hearts', img: $('<img src="images/KH.png" />').addClass('card')}, {card: 'K', value: 10, suit: 'spades', img: $('<img src="images/KS.png" />').addClass('card')}, {card: 'K', value: 10, suit: 'diamonds', img: $('<img src="images/KD.png" />').addClass('card')}, {card: 'K', value: 10, suit: 'clubs', img: $('<img src="images/KC.png" />').addClass('card')}
 ]
 
 //build the deck with random cards
@@ -167,27 +168,29 @@ const dealerCardsValue = () => {
 //display the users cards to the user
 const showPlayersCards = () => {
   for(let i = 0; i < playerCards.length; i++){
-    $('#showPlayerCards').append(`${playerCards[i].card} of ${playerCards[i].suit}, `)
+
+    $('#showPlayerCards').append(playerCards[i].img)
   }
 }
 //display the computers cards to the user
 const showDealersCardsFaceDown = () => {
-  $('#showDealerCards').append(`Face down card, `)
+  $('#showDealerCards').append($('<img src="images/backcard.png" />').addClass('card'))
   for(let i = 1; i < dealerCards.length; i++){
-    $('#showDealerCards').append(`${dealerCards[i].card} of ${dealerCards[i].suit}, `)
+    $('#showDealerCards').append(dealerCards[i].img)
   }
 }
 
 const showDealersCards = () => {
   for(let i = 0; i < dealerCards.length; i++){
-    $('#showDealerCards').append(`${dealerCards[i].card} of ${dealerCards[i].suit}, `)
+      $('#showDealerCards').append(dealerCards[i].img)
   }
 }
 
+
 $(() => {
+
   $('#start').on('click', () => {
     //shuffle the deck and make the deal button
-
     randomizeDeck()
     const $betButton = $('<button>').text('Bet')
     $('#topButtons').append($betButton)
@@ -268,8 +271,14 @@ $(() => {
       })
     })
   })
-  if(money <= 185){
+  if(money <= 0){
     alert('You ran out of money!')
+    $($betButton).remove()
+    $('#start').show().text('New game')
+    money = 200
+  }
+  if(money >= 400){
+    alert('You won!')
     $($betButton).remove()
     $('#start').show().text('New game')
     money = 200
@@ -277,7 +286,7 @@ $(() => {
 })
 
 
-    $('#readRules').on('click', () => {
+    $('#readRules').one('click', () => {
       const $rulesTitle = $('<h2>').text('Rules')
       $('#rules').append($rulesTitle)
       const $rules = $('<p>').html('Player attempts to beat the dealer by getting a count as close to 21 as possible, without going over 21. <br/> An ace card can be worth 1 or 11. Face cards are worth 10 and any other cards are worth the value shown on them. <br/> Before the cards are delt, player places a bet of $5. <br/> Player and Dealer recieve 2 cards each. The player then has the ability to call Hit Me, which gives the Player another call if they would like. If the Player is satisfied with their hand, they stay. <br/>  The Dealer checks their hand, if they have less than 15 count, then they will automatically call Hit Me. If no one has passed 21, then the hands are compared and the highest count wins the round! <br/> Player will start with $200. Player loses if he loses all the money, and wins if $400 is reached.')

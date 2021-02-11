@@ -186,21 +186,22 @@ const showDealersCards = () => {
   }
 }
 
-
 $(() => {
+  $('#playButton').on('click', () => {
+    const $playBtn = $('#playButton');
+    $($playBtn).css('display','none');
+    const $betBtn = $('<button>').text('Bet').addClass('buttons')
+    $('#playerMoney').prepend($betBtn)
 
-  $('#start').on('click', () => {
+  $($betBtn).on('click', () => {
     //shuffle the deck and make the deal button
     randomizeDeck()
-    const $betButton = $('<button>').text('Bet').addClass('buttons')
-    $('#top').append($betButton)
-    $('#start').hide()
-    $($betButton).on('click', () => {
+    $('#playButton').hide()
       //place a bet
       bet()
       const $dealButton = $('<button>').text('Deal').addClass('buttons')
-      $('#top').append($dealButton)
-      $($betButton).remove()
+      $('#dealSpace').append($dealButton)
+      $($betBtn).remove()
 
     $($dealButton).on('click', () => {
       //give each player two cards, turn the start button and the deal button off
@@ -214,9 +215,9 @@ $(() => {
       playerCardsValue()
       //make the hit me and stay button
       const $hitMeButton = $('<button>').text('Hit Me').addClass('buttons')
-      $('#player').append($hitMeButton)
+      $('#dealSpace').append($hitMeButton)
       const $stayButton = $('<button>').text('Stay').addClass('buttons')
-      $('#player').append($stayButton)
+      $('#dealSpace').append($stayButton)
 
       $($hitMeButton).on('click', () => {
         //gives another card and checks if they went over 21
@@ -270,7 +271,7 @@ $(() => {
         }
       })
     })
-  })
+
   if(money <= 0){
     alert('You ran out of money!')
     $($betButton).remove()
@@ -284,8 +285,8 @@ $(() => {
     money = 200
   }
 })
-
-  let a;
+})
+  let a = 0
     $('#readRules').on('click', () => {
 
       if(a == 1){

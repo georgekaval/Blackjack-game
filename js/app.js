@@ -1,6 +1,6 @@
-//Make an array with all the cards as objects
+//https://georgekaval.github.io/Blackjack-game/
 
-// $('#showPlayerCards').append(defineDeck[0].img)
+//Make an array with all the cards as objects
 const defineDeck =[
   {card: 'A', value: 1, suit: 'hearts', img: $('<img src="images/a_heart.png" />').addClass('card')}, {card: 'A', value: 1, suit: 'spades', img: $('<img src="images/A_spade.png" />').addClass('card')}, {card: 'A', value: 1, suit: 'diamonds', img: $('<img src="images/A_diamond.png" />').addClass('card')}, {card: 'A', value: 1, suit: 'clubs', img: $('<img src="images/A_club.png" />').addClass('card')}, {card: 2, value: 2, suit: 'hearts', img: $('<img src="images/two_heart.png" />').addClass('card')}, {card: 2, value: 2, suit: 'spades', img: $('<img src="images/two_spade.png" />').addClass('card')}, {card: 2, value: 2, suit: 'diamonds', img: $('<img src="images/two_diamond.png" />').addClass('card')}, {card: 2, value: 2, suit: 'clubs', img: $('<img src="images/two_club.png" />').addClass('card')}, {card: 3, value: 3, suit: 'hearts', img: $('<img src="images/three_heart.png" />').addClass('card')}, {card: 3, value: 3, suit: 'spades', img: $('<img src="images/three_spade.png" />').addClass('card')}, {card: 3, value: 3, suit: 'diamonds', img: $('<img src="images/three_diamond.png" />').addClass('card')}, {card: 3, value: 3, suit: 'clubs', img: $('<img src="images/three_club.png" />').addClass('card')}, {card: 4, value: 4, suit: 'hearts', img: $('<img src="images/four_heart.png" />').addClass('card')}, {card: 4, value: 4, suit: 'spades', img: $('<img src="images/four_spade.png" />').addClass('card')}, {card: 4, value: 4, suit: 'diamonds', img: $('<img src="images/four_diamond.png" />').addClass('card')}, {card: 4, value: 4, suit: 'clubs', img: $('<img src="images/four_club.png" />').addClass('card')}, {card: 5, value: 5, suit: 'hearts', img: $('<img src="images/five_heart.png" />').addClass('card')}, {card: 5, value: 5, suit: 'spades', img: $('<img src="images/five_spade.png" />').addClass('card')}, {card: 5, value: 5, suit: 'diamonds', img: $('<img src="images/five_diamond.png" />').addClass('card')}, {card: 5, value: 5, suit: 'clubs', img: $('<img src="images/five_club.png" />').addClass('card')}, {card: 6, value: 6, suit: 'hearts', img: $('<img src="images/six_heart.png" />').addClass('card')}, {card: 6, value: 6, suit: 'spades', img: $('<img src="images/six_spade.png" />').addClass('card')}, {card: 6, value: 6, suit: 'diamonds', img: $('<img src="images/six_diamond.png" />').addClass('card')}, {card: 6, value: 6, suit: 'clubs', img: $('<img src="images/six_club.png" />').addClass('card')}, {card: 7, value: 7, suit: 'hearts', img: $('<img src="images/seven_heart.png" />').addClass('card')}, {card: 7, value: 7, suit: 'spades', img: $('<img src="images/seven_spade.png" />').addClass('card')}, {card: 7, value: 7, suit: 'diamonds', img: $('<img src="images/seven_diamond.png" />').addClass('card')}, {card: 7, value: 7, suit: 'clubs', img: $('<img src="images/seven_club.png" />').addClass('card')}, {card: 8, value: 8, suit: 'hearts', img: $('<img src="images/eight_heart.png" />').addClass('card')}, {card: 8, value: 8, suit: 'spades', img: $('<img src="images/eight_spade.png" />').addClass('card')}, {card: 8, value: 8, suit: 'diamonds', img: $('<img src="images/eight_diamond.png" />').addClass('card')}, {card: 8, value: 8, suit: 'clubs', img: $('<img src="images/eight_club.png" />').addClass('card')}, {card: 9, value: 9, suit: 'hearts', img: $('<img src="images/nine_heart.png" />').addClass('card')}, {card: 9, value: 9, suit: 'spades', img: $('<img src="images/nine_spade.png" />').addClass('card')}, {card: 9, value: 9, suit: 'diamonds', img: $('<img src="images/nine_diamond.png" />').addClass('card')}, {card: 9, value: 9, suit: 'clubs', img: $('<img src="images/nine_club.png" />').addClass('card')}, {card: 10, value: 10, suit: 'hearts', img: $('<img src="images/ten_heart.png" />').addClass('card')}, {card: 10, value: 10, suit: 'spades', img: $('<img src="images/ten_spade.png" />').addClass('card')}, {card: 10, value: 10, suit: 'diamonds', img: $('<img src="images/ten_diamond.png" />').addClass('card')}, {card: 10, value: 10, suit: 'clubs', img: $('<img src="images/ten_club.png" />').addClass('card')}, {card: 'J', value: 10, suit: 'hearts', img: $('<img src="images/JH.png" />').addClass('card')}, {card: 'J', value: 10, suit: 'spades', img: $('<img src="images/JS.png" />').addClass('card')}, {card: 'J', value: 10, suit: 'diamonds', img: $('<img src="images/JD.png" />').addClass('card')}, {card: 'J', value: 10, suit: 'clubs', img: $('<img src="images/JC.png" />').addClass('card')}, {card: 'Q', value: 10, suit: 'hearts', img: $('<img src="images/QH.png" />').addClass('card')}, {card: 'Q', value: 10, suit: 'spades', img: $('<img src="images/QS.png" />').addClass('card')}, {card: 'Q', value: 10, suit: 'diamonds', img: $('<img src="images/QD.png" />').addClass('card')}, {card: 'Q', value: 10, suit: 'clubs', img: $('<img src="images/QC.png" />').addClass('card')}, {card: 'K', value: 10, suit: 'hearts', img: $('<img src="images/KH.png" />').addClass('card')}, {card: 'K', value: 10, suit: 'spades', img: $('<img src="images/KS.png" />').addClass('card')}, {card: 'K', value: 10, suit: 'diamonds', img: $('<img src="images/KD.png" />').addClass('card')}, {card: 'K', value: 10, suit: 'clubs', img: $('<img src="images/KC.png" />').addClass('card')}
 ]
@@ -192,14 +192,14 @@ $(() => {
   $('#start').on('click', () => {
     //shuffle the deck and make the deal button
     randomizeDeck()
-    const $betButton = $('<button>').text('Bet')
-    $('#topButtons').append($betButton)
+    const $betButton = $('<button>').text('Bet').addClass('buttons')
+    $('#top').append($betButton)
     $('#start').hide()
     $($betButton).on('click', () => {
       //place a bet
       bet()
-      const $dealButton = $('<button>').text('Deal')
-      $('#topButtons').append($dealButton)
+      const $dealButton = $('<button>').text('Deal').addClass('buttons')
+      $('#top').append($dealButton)
       $($betButton).remove()
 
     $($dealButton).on('click', () => {
@@ -213,9 +213,9 @@ $(() => {
       showDealersCardsFaceDown()
       playerCardsValue()
       //make the hit me and stay button
-      const $hitMeButton = $('<button>').text('Hit Me')
+      const $hitMeButton = $('<button>').text('Hit Me').addClass('buttons')
       $('#player').append($hitMeButton)
-      const $stayButton = $('<button>').text('Stay')
+      const $stayButton = $('<button>').text('Stay').addClass('buttons')
       $('#player').append($stayButton)
 
       $($hitMeButton).on('click', () => {
@@ -285,12 +285,17 @@ $(() => {
   }
 })
 
+  let a;
+    $('#readRules').on('click', () => {
 
-    $('#readRules').one('click', () => {
-      const $rulesTitle = $('<h2>').text('Rules')
-      $('#rules').append($rulesTitle)
-      const $rules = $('<p>').html('Player attempts to beat the dealer by getting a count as close to 21 as possible, without going over 21. <br/> An ace card can be worth 1 or 11. Face cards are worth 10 and any other cards are worth the value shown on them. <br/> Before the cards are delt, player places a bet of $5. <br/> Player and Dealer recieve 2 cards each. The player then has the ability to call Hit Me, which gives the Player another call if they would like. If the Player is satisfied with their hand, they stay. <br/>  The Dealer checks their hand, if they have less than 15 count, then they will automatically call Hit Me. If no one has passed 21, then the hands are compared and the highest count wins the round! <br/> Player will start with $200. Player loses if he loses all the money, and wins if $400 is reached.')
-      $('#rules').append($rules)
+      if(a == 1){
+        $('.rules').css('display', 'none')
+        return a=0;
+      }else {
+        $('.rules').css('display', 'inline')
+
+        return a=1;
+      }
     })
 //I should not have to click stay twice for the computer to finish its turn, if the computer has under 15, the first stay does a hitme and does not do a checkHands. if the computer has over 15 when I stay it seems to work fine.
 //If player gets 21 on the beginning 2 cards, they should automatically win unless the dealer also has a 21 with the first 2 cards.

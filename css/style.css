@@ -2,10 +2,10 @@ body {
   background: green;
 
 }
-#player {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+#playerCardsContainer {
+  text-align: center;
+  position:relative;
+  margin-top: 200px;
 }
 #header {
   text-align: center;
@@ -15,8 +15,25 @@ body {
   width: 100px;
   height: 150px;
 }
-#dealer {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+#dealerCardsContainer {
+  text-align: center;
+  margin-bottom: 200px;
+}
+#playerCurrentValue{
+  position:relative;
+  left: 700px;
+  top: 300px;
+}
+#dealerCurrentValue{
+  position:relative;
+  left: 700px;
+}
+#playerMoney{
+  position: relative;
+  top:150px;
+  left:150px;
+}
+#readRules{
+  position: relative;
+  top:200px;
 }

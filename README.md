@@ -1,6 +1,7 @@
 # Blackjack-game
 
 ![Wireframe](Wireframe_Blackjack.png)
+[Website](https://georgekaval.github.io/Blackjack-game/)
 1.As a user, I should be able to start a new blackjack game.  
 
 2.As a user, I should be given an $200 allowance to play with.  

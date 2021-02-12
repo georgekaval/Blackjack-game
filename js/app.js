@@ -4,7 +4,6 @@
 const defineDeck =[
   {card: 'A', value: 1, suit: 'hearts', img: $('<img src="images/a_heart.png" />').addClass('card')}, {card: 'A', value: 1, suit: 'spades', img: $('<img src="images/A_spade.png" />').addClass('card')}, {card: 'A', value: 1, suit: 'diamonds', img: $('<img src="images/A_diamond.png" />').addClass('card')}, {card: 'A', value: 1, suit: 'clubs', img: $('<img src="images/A_club.png" />').addClass('card')}, {card: 2, value: 2, suit: 'hearts', img: $('<img src="images/two_heart.png" />').addClass('card')}, {card: 2, value: 2, suit: 'spades', img: $('<img src="images/two_spade.png" />').addClass('card')}, {card: 2, value: 2, suit: 'diamonds', img: $('<img src="images/two_diamond.png" />').addClass('card')}, {card: 2, value: 2, suit: 'clubs', img: $('<img src="images/two_club.png" />').addClass('card')}, {card: 3, value: 3, suit: 'hearts', img: $('<img src="images/three_heart.png" />').addClass('card')}, {card: 3, value: 3, suit: 'spades', img: $('<img src="images/three_spade.png" />').addClass('card')}, {card: 3, value: 3, suit: 'diamonds', img: $('<img src="images/three_diamond.png" />').addClass('card')}, {card: 3, value: 3, suit: 'clubs', img: $('<img src="images/three_club.png" />').addClass('card')}, {card: 4, value: 4, suit: 'hearts', img: $('<img src="images/four_heart.png" />').addClass('card')}, {card: 4, value: 4, suit: 'spades', img: $('<img src="images/four_spade.png" />').addClass('card')}, {card: 4, value: 4, suit: 'diamonds', img: $('<img src="images/four_diamond.png" />').addClass('card')}, {card: 4, value: 4, suit: 'clubs', img: $('<img src="images/four_club.png" />').addClass('card')}, {card: 5, value: 5, suit: 'hearts', img: $('<img src="images/five_heart.png" />').addClass('card')}, {card: 5, value: 5, suit: 'spades', img: $('<img src="images/five_spade.png" />').addClass('card')}, {card: 5, value: 5, suit: 'diamonds', img: $('<img src="images/five_diamond.png" />').addClass('card')}, {card: 5, value: 5, suit: 'clubs', img: $('<img src="images/five_club.png" />').addClass('card')}, {card: 6, value: 6, suit: 'hearts', img: $('<img src="images/six_heart.png" />').addClass('card')}, {card: 6, value: 6, suit: 'spades', img: $('<img src="images/six_spade.png" />').addClass('card')}, {card: 6, value: 6, suit: 'diamonds', img: $('<img src="images/six_diamond.png" />').addClass('card')}, {card: 6, value: 6, suit: 'clubs', img: $('<img src="images/six_club.png" />').addClass('card')}, {card: 7, value: 7, suit: 'hearts', img: $('<img src="images/seven_heart.png" />').addClass('card')}, {card: 7, value: 7, suit: 'spades', img: $('<img src="images/seven_spade.png" />').addClass('card')}, {card: 7, value: 7, suit: 'diamonds', img: $('<img src="images/seven_diamond.png" />').addClass('card')}, {card: 7, value: 7, suit: 'clubs', img: $('<img src="images/seven_club.png" />').addClass('card')}, {card: 8, value: 8, suit: 'hearts', img: $('<img src="images/eight_heart.png" />').addClass('card')}, {card: 8, value: 8, suit: 'spades', img: $('<img src="images/eight_spade.png" />').addClass('card')}, {card: 8, value: 8, suit: 'diamonds', img: $('<img src="images/eight_diamond.png" />').addClass('card')}, {card: 8, value: 8, suit: 'clubs', img: $('<img src="images/eight_club.png" />').addClass('card')}, {card: 9, value: 9, suit: 'hearts', img: $('<img src="images/nine_heart.png" />').addClass('card')}, {card: 9, value: 9, suit: 'spades', img: $('<img src="images/nine_spade.png" />').addClass('card')}, {card: 9, value: 9, suit: 'diamonds', img: $('<img src="images/nine_diamond.png" />').addClass('card')}, {card: 9, value: 9, suit: 'clubs', img: $('<img src="images/nine_club.png" />').addClass('card')}, {card: 10, value: 10, suit: 'hearts', img: $('<img src="images/ten_heart.png" />').addClass('card')}, {card: 10, value: 10, suit: 'spades', img: $('<img src="images/ten_spade.png" />').addClass('card')}, {card: 10, value: 10, suit: 'diamonds', img: $('<img src="images/ten_diamond.png" />').addClass('card')}, {card: 10, value: 10, suit: 'clubs', img: $('<img src="images/ten_club.png" />').addClass('card')}, {card: 'J', value: 10, suit: 'hearts', img: $('<img src="images/JH.png" />').addClass('card')}, {card: 'J', value: 10, suit: 'spades', img: $('<img src="images/JS.png" />').addClass('card')}, {card: 'J', value: 10, suit: 'diamonds', img: $('<img src="images/JD.png" />').addClass('card')}, {card: 'J', value: 10, suit: 'clubs', img: $('<img src="images/JC.png" />').addClass('card')}, {card: 'Q', value: 10, suit: 'hearts', img: $('<img src="images/QH.png" />').addClass('card')}, {card: 'Q', value: 10, suit: 'spades', img: $('<img src="images/QS.png" />').addClass('card')}, {card: 'Q', value: 10, suit: 'diamonds', img: $('<img src="images/QD.png" />').addClass('card')}, {card: 'Q', value: 10, suit: 'clubs', img: $('<img src="images/QC.png" />').addClass('card')}, {card: 'K', value: 10, suit: 'hearts', img: $('<img src="images/KH.png" />').addClass('card')}, {card: 'K', value: 10, suit: 'spades', img: $('<img src="images/KS.png" />').addClass('card')}, {card: 'K', value: 10, suit: 'diamonds', img: $('<img src="images/KD.png" />').addClass('card')}, {card: 'K', value: 10, suit: 'clubs', img: $('<img src="images/KC.png" />').addClass('card')}
 ]
-
 //build the deck with random cards
 const randomizeDeck = () => {
   for(let i = defineDeck.length - 1; i > 0; i--) {
@@ -12,7 +11,6 @@ const randomizeDeck = () => {
     [defineDeck[i],defineDeck[j]] = [defineDeck[j], defineDeck[i]]
   }
 }
-
 //Have the computer choose the first 2 cards for itself and the user
 let dealerCards = []
 let playerCards = []
@@ -21,12 +19,10 @@ const dealCards = () => {
   dealerCards = defineDeck.splice(0,2)
   playerCards = defineDeck.splice(0,2)
 }
-
 //Choose another card, this is called in the hitMeCheckTwentyOne function
 const hitMeBasic = (who) => {
   who.push(...defineDeck.splice(0,1))
 }
-
 //Have the computer count the cards values in a hand
 let sum = 0
 const countCardValue = (who) => {
@@ -35,35 +31,47 @@ const countCardValue = (who) => {
     sum += who[i].value
   }return sum
 }
+//choose another card into the array, add up the value of total cards in array, then show it on the DOM
+const hitMePlayer = () => {
+  sum = 0
+  hitMeBasic(playerCards)
+  countCardValue(playerCards)
+  showPlayersCards()
+}
+const hitMeDealer = () => {
+  sum = 0
+  hitMeBasic(dealerCards)
+  countCardValue(dealerCards)
+  showDealersCards()
+}
 //check Ace for player
 const checkPlayerAce = () => {
   for(let i = 0; i < playerCards.length; i ++){
-      if(playerCards[i].card === 'A'){
-        const playerAnswer = prompt('Would you like your Ace to be counted as 1 or 11?', '1 or 11')
-        if(playerAnswer.trim() === '11'){
+    if(playerCards[i].card === 'A'){
+      const playerAnswer = prompt('Would you like your Ace to be counted as 1 or 11?', '1 or 11')
+      if(playerAnswer.trim() === '11'){
           playerCards[i].value = 11
-        }else if(playerAnswer.trim() === '1'){
+      }else if(playerAnswer.trim() === '1'){
           playerCards[i].value = 1
-        }else if(playerAnswer.trim() !== '1' && playerAnswer.trim() !== '11'){
+      }else if(playerAnswer.trim() !== '1' && playerAnswer.trim() !== '11'){
           const playerAnswer = prompt('Would you like your Ace to be counted as 1 or 11?', '1 or 11')
-        }
       }
     }
+  }
 }
-
-//check ace for dealer
+//check ace for dealer and set conditions for when to make A equal to 11
 const checkDealerAce = () => {
   for(let i = 0; i < dealerCards.length; i ++){
-      if(dealerCards[i].card === 'A'){
-        if(countCardValue(dealerCards) + 10 >= 18 && countCardValue(dealerCards) + 10 <= 21){
+    if(dealerCards[i].card === 'A'){
+      if(countCardValue(dealerCards) + 10 >= 18 && countCardValue(dealerCards) + 10 <= 21){
           dealerCards[i].value = 11
-        }
       }
     }
+  }
 }
-//place a bet
+//set starting money
 let money = 200
-
+//place a bet
 const bet = () => {
   let bet = 5
   money -= bet
@@ -81,56 +89,36 @@ const tieBet = () => {
   money += 5
   $('#playersCurrentMoney').text(`$${money}`)
 }
-
-
-//reset values on screen and push the cards on the table into a used cards array
-const resetValues = () => {
-  $('#playervalue').text('0')
-  $('#dealervalue').text('0')
-  usedCards.push(...dealerCards.splice(0,dealerCards.length))
-  usedCards.push(...playerCards.splice(0,playerCards.length))
-  $('#showPlayerCards').text('')
-  $('#showDealerCards').text('')
-  $('#outcome').text('')
-}
-
-//Have the computer check when the hit me button is clicked, if user or computer passed 21 they get alert they lost and the buttons for hit me and stay are turned off
-const hitMeCheckTwentyOne = (who, button1, button2) => {
-  sum = 0
-  hitMeBasic(who);
-  countCardValue(who)
-  showDealersCardsFaceDown()
-  if(sum > 21 && who === playerCards) {
-    showPlayersCards()
+//Check if players cards value is over 21, tell the player they lost, remove the hit me and stay button, and give the option to play again
+const checkPlayerTwentyOne = (button1, button2) => {
+  if(sum > 21){
     const tellPlayerBust = () => {
       const $playerBust = $('<h3>').text(`${countCardValue(playerCards)}! Player busts, Dealer wins!`)
       $('#outcome').append($playerBust)
-      // alert(`${countCardValue(playerCards)}! Player busts, Dealer wins!`)
     }
-    setTimeout(tellPlayerBust,500)
+    tellPlayerBust()
     $(button1).remove()
     $(button2).remove()
-    // setTimeout(resetValues,1000)
     $('#playButton').show().text('Play again')
-  }if(sum > 21 && who === dealerCards) {
-    showDealersCards()
+  }
+}
+
+const checkDealerTwentyOne = (button1, button2) => {
+  if(sum > 21){
     const tellDealerBust = () => {
       const $dealerBust = $('<h3>').text(`${countCardValue(dealerCards)}! Dealer busts, Player wins!`)
       $('#outcome').append($dealerBust)
-    // alert(`${countCardValue(dealerCards)}! Dealer busts, Player wins!`)
-  }
+    }
+    tellDealerBust()
     winBet()
-    setTimeout(tellDealerBust,500)
     $(button1).remove()
     $(button2).remove()
-    // setTimeout(resetValues,1000)
     $('#playButton').show().text('New round')
   }
 }
 //Have the computer compare the two hands and see who won, if no one hit over 21 already
 const checkHands = (button1, button2) => {
   checkPlayerAce()
-  sum = 0
   countCardValue(playerCards)
   playerSum = sum
   sum = 0
@@ -141,16 +129,13 @@ const checkHands = (button1, button2) => {
   if(playerSum > dealerSum && playerSum < 22) {
     const $playerwon = $('<h3>').text(`Player has ${countCardValue(playerCards)}, Dealer has ${countCardValue(dealerCards)}.  Player won!`)
     $('#outcome').append($playerwon)
-    // alert(`Player has ${countCardValue(playerCards)}, Dealer has ${countCardValue(dealerCards)}.  Player won!`)
     winBet()
   }else if(dealerSum > playerSum && dealerSum < 22){
     const $dealerwon = $('<h3>').text(`Dealer has ${countCardValue(dealerCards)}, Player has ${countCardValue(playerCards)}.  Dealer won!`)
     $('#outcome').append($dealerwon)
-    // alert(`Dealer has ${countCardValue(dealerCards)}, Player has ${countCardValue(playerCards)}.  Dealer won!`)
   }else if(dealerSum === playerSum){
     const $tie = $('<h3>').text(`Player has ${countCardValue(playerCards)} and Dealer has ${countCardValue(dealerCards)}.  Push!`)
     $('#outcome').append($tie)
-    // alert(`Player has ${countCardValue(playerCards)} and Dealer has ${countCardValue(dealerCards)}.  Push!`)
     tieBet()
   }
   $('#playButton').show().text('New round')
@@ -194,6 +179,17 @@ const showDealersCards = () => {
   }
 }
 
+//reset values on screen and push the cards on the table into a used cards array
+const resetValues = () => {
+  $('#playervalue').text('0')
+  $('#dealervalue').text('0')
+  usedCards.push(...dealerCards.splice(0,dealerCards.length))
+  usedCards.push(...playerCards.splice(0,playerCards.length))
+  $('#showPlayerCards').text('')
+  $('#showDealerCards').text('')
+  $('#outcome').text('')
+}
+
 $(() => {
   $('#playButton').on('click', () => {
     const $playBtn = $('#playButton');
@@ -229,11 +225,10 @@ $(() => {
 
       $($hitMeButton).on('click', () => {
         //gives another card and checks if they went over 21
-        hitMeCheckTwentyOne(playerCards, $hitMeButton, $stayButton)
+        hitMePlayer()
+        checkPlayerTwentyOne($hitMeButton, $stayButton)
         $('#showPlayerCards').text('')
-        $('#showDealerCards').text('')
         showPlayersCards()
-        showDealersCardsFaceDown()
         playerCardsValue()
 
       })
@@ -242,40 +237,39 @@ $(() => {
         $($hitMeButton).remove()
         checkDealerAce()
         if(countCardValue(dealerCards) < 15){
-          dealerCardsValue()
-          $('#showDealerCards').text('')
-          showDealersCards()
-          hitMeCheckTwentyOne(dealerCards, $hitMeButton, $stayButton)
+          hitMeDealer()
+          checkDealerTwentyOne($hitMeButton, $stayButton)
           checkDealerAce()
           $('#showDealerCards').text('')
           showDealersCards()
           dealerCardsValue()
           if(countCardValue(dealerCards) < 15){
-            hitMeCheckTwentyOne(dealerCards, $hitMeButton, $stayButton)
+            hitMeDealer()
+            checkDealerTwentyOne($hitMeButton, $stayButton)
             dealerCardsValue()
             $('#showDealerCards').text('')
             showDealersCards()
             checkDealerAce()
             if(countCardValue(dealerCards) < 15){
-              hitMeCheckTwentyOne(dealerCards, $hitMeButton, $stayButton)
+              hitMeDealer()
+              checkDealerTwentyOne($hitMeButton, $stayButton)
               dealerCardsValue()
               $('#showDealerCards').text('')
               showDealersCards()
               checkDealerAce()
               if(countCardValue(dealerCards) < 15){
-                hitMeCheckTwentyOne(dealerCards, $hitMeButton, $stayButton)
+                hitMeDealer()
+                checkDealerTwentyOne($hitMeButton, $stayButton)
                 dealerCardsValue()
                 $('#showDealerCards').text('')
                 showDealersCards()
-                if(countCardValue(dealerCards) > 15){
-                  showDealersCards()
-                  checkHands($hitMeButton, $stayButton)
-                }
               }
             }
           }
         }if(countCardValue(dealerCards) >= 15){
-            checkHands($hitMeButton, $stayButton)
+          $('#showDealerCards').text('')
+          showDealersCards()
+          checkHands($hitMeButton, $stayButton)
         }
       })
     })
@@ -298,11 +292,14 @@ $(() => {
     $('#readRules').on('click', () => {
 
       if(a == 1){
-        $('.rules').css('display', 'none')
+        $('#rulesBox').css('display', 'none')
         return a=0;
       }else {
-        $('.rules').css('display', 'inline')
-
+        $('#rulesBox').css('display', 'block')
+        $('#rulesBox').css('border', 'solid black')
+        $('#rulesBox').css('background', 'white')
+        $('#playerMoney').css('position', 'relative')
+        $('#playerMoney').css('bottom', '275px')
         return a=1;
       }
     })

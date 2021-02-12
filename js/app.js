@@ -19,6 +19,16 @@ const dealCards = () => {
   dealerCards = defineDeck.splice(0,2)
   playerCards = defineDeck.splice(0,2)
 }
+//reshuffle deck when low
+const reshuffle =() => {
+  if(defineDeck.length < 15){
+    defineDeck.push(...usedCards.splice(0,usedCards.length))
+      console.log('shuffle');
+
+  }
+}
+
+
 //Choose another card, this is called in the hitMeCheckTwentyOne function
 const hitMeBasic = (who) => {
   who.push(...defineDeck.splice(0,1))
@@ -89,13 +99,16 @@ const tieBet = () => {
   money += 5
   $('#playersCurrentMoney').text(`$${money}`)
 }
+const displayOutcome = () => {
+  $('#outcome').css('display', 'block')
+  $('#outcome').css('border', 'solid black')
+}
 //Check if players cards value is over 21, tell the player they lost, remove the hit me and stay button, and give the option to play again
 const checkPlayerTwentyOne = (button1, button2) => {
   if(sum > 21){
     const tellPlayerBust = () => {
       const $playerBust = $('<h3>').text(`${countCardValue(playerCards)}! Player busts, Dealer wins!`)
-      $('#outcome').css('display', 'block')
-      $('#outcome').css('border', 'solid black')
+      displayOutcome()
       $('#outcome').append($playerBust)
     }
     tellPlayerBust()
@@ -109,8 +122,7 @@ const checkDealerTwentyOne = (button1, button2) => {
   if(sum > 21){
     const tellDealerBust = () => {
       const $dealerBust = $('<h3>').text(`${countCardValue(dealerCards)}! Dealer busts, Player wins!`)
-      $('#outcome').css('display', 'block')
-      $('#outcome').css('border', 'solid black')
+      displayOutcome()
       $('#outcome').append($dealerBust)
     }
     tellDealerBust()
@@ -120,39 +132,34 @@ const checkDealerTwentyOne = (button1, button2) => {
     $('#playButton').show().text('New round')
   }
 }
-//Have the computer compare the two hands and see who won, if no one hit over 21 already
-const checkHands = (button1, button2) => {
+//Get both hands values together
+const countBothHandsValues = () => {
   checkPlayerAce()
   countCardValue(playerCards)
   playerSum = sum
   sum = 0
   countCardValue(dealerCards)
   dealerSum = sum
-  $(button1).remove()
-  $(button2).remove()
+}
+//compare the two hands to see who won
+const compareHands = () => {
+  countBothHandsValues()
   if(playerSum > dealerSum && playerSum < 22) {
     const $playerwon = $('<h3>').text(`Player has ${countCardValue(playerCards)}, Dealer has ${countCardValue(dealerCards)}.  Player won!`)
-    $('#outcome').css('display', 'block')
-    $('#outcome').css('border', 'solid black')
+    displayOutcome()
     $('#outcome').append($playerwon)
     winBet()
   }else if(dealerSum > playerSum && dealerSum < 22){
     const $dealerwon = $('<h3>').text(`Dealer has ${countCardValue(dealerCards)}, Player has ${countCardValue(playerCards)}.  Dealer won!`)
-    $('#outcome').css('display', 'block')
-    $('#outcome').css('border', 'solid black')
+    displayOutcome()
     $('#outcome').append($dealerwon)
   }else if(dealerSum === playerSum){
     const $tie = $('<h3>').text(`Player has ${countCardValue(playerCards)} and Dealer has ${countCardValue(dealerCards)}.  Push!`)
-    $('#outcome').css('display', 'block')
-    $('#outcome').css('border', 'solid black')
+    displayOutcome()
     $('#outcome').append($tie)
-
     tieBet()
   }
   $('#playButton').show().text('New round')
-}
-const checkHandsNew = () => {
-
 }
 //display the value of the users cards to the user
 const playerCardsValue = () => {
@@ -211,6 +218,7 @@ $(() => {
     $('#outcome').css('display', 'none')
     const $betBtn = $('<button>').text('Bet').addClass('buttons')
     $('#playerMoney').append($betBtn)
+    reshuffle()
     resetValues()
   $($betBtn).on('click', () => {
     //shuffle the deck and make the deal button
@@ -250,6 +258,7 @@ $(() => {
       $($stayButton).on('click', () => {
         //user stays with their cards and the computer gives itself another card if its cards value is less than 15, if not then checkhands has the cards compared to see who the winner is
         $($hitMeButton).remove()
+        $($stayButton).remove()
         checkDealerAce()
         if(countCardValue(dealerCards) < 15){
           hitMeDealer()
@@ -284,7 +293,7 @@ $(() => {
         }if(countCardValue(dealerCards) >= 15){
           $('#showDealerCards').text('')
           showDealersCards()
-          checkHands($hitMeButton, $stayButton)
+          compareHands()
         }
       })
     })

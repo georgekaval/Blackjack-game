@@ -94,6 +94,8 @@ const checkPlayerTwentyOne = (button1, button2) => {
   if(sum > 21){
     const tellPlayerBust = () => {
       const $playerBust = $('<h3>').text(`${countCardValue(playerCards)}! Player busts, Dealer wins!`)
+      $('#outcome').css('display', 'block')
+      $('#outcome').css('border', 'solid black')
       $('#outcome').append($playerBust)
     }
     tellPlayerBust()
@@ -107,6 +109,8 @@ const checkDealerTwentyOne = (button1, button2) => {
   if(sum > 21){
     const tellDealerBust = () => {
       const $dealerBust = $('<h3>').text(`${countCardValue(dealerCards)}! Dealer busts, Player wins!`)
+      $('#outcome').css('display', 'block')
+      $('#outcome').css('border', 'solid black')
       $('#outcome').append($dealerBust)
     }
     tellDealerBust()
@@ -128,20 +132,27 @@ const checkHands = (button1, button2) => {
   $(button2).remove()
   if(playerSum > dealerSum && playerSum < 22) {
     const $playerwon = $('<h3>').text(`Player has ${countCardValue(playerCards)}, Dealer has ${countCardValue(dealerCards)}.  Player won!`)
+    $('#outcome').css('display', 'block')
+    $('#outcome').css('border', 'solid black')
     $('#outcome').append($playerwon)
     winBet()
   }else if(dealerSum > playerSum && dealerSum < 22){
     const $dealerwon = $('<h3>').text(`Dealer has ${countCardValue(dealerCards)}, Player has ${countCardValue(playerCards)}.  Dealer won!`)
+    $('#outcome').css('display', 'block')
+    $('#outcome').css('border', 'solid black')
     $('#outcome').append($dealerwon)
   }else if(dealerSum === playerSum){
     const $tie = $('<h3>').text(`Player has ${countCardValue(playerCards)} and Dealer has ${countCardValue(dealerCards)}.  Push!`)
+    $('#outcome').css('display', 'block')
+    $('#outcome').css('border', 'solid black')
     $('#outcome').append($tie)
+
     tieBet()
   }
   $('#playButton').show().text('New round')
 }
 const checkHandsNew = () => {
-  
+
 }
 //display the value of the users cards to the user
 const playerCardsValue = () => {
@@ -197,8 +208,9 @@ $(() => {
   $('#playButton').on('click', () => {
     const $playBtn = $('#playButton');
     $($playBtn).css('display','none');
+    $('#outcome').css('display', 'none')
     const $betBtn = $('<button>').text('Bet').addClass('buttons')
-    $('#playerMoney').prepend($betBtn)
+    $('#playerMoney').append($betBtn)
     resetValues()
   $($betBtn).on('click', () => {
     //shuffle the deck and make the deal button
@@ -292,7 +304,7 @@ $(() => {
 })
 })
   let a = 0
-    $('#readRules').on('click', () => {
+    $('#readRulesButton').on('click', () => {
 
       if(a == 1){
         $('#rulesBox').css('display', 'none')

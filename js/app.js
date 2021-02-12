@@ -140,6 +140,9 @@ const checkHands = (button1, button2) => {
   }
   $('#playButton').show().text('New round')
 }
+const checkHandsNew = () => {
+  
+}
 //display the value of the users cards to the user
 const playerCardsValue = () => {
   $('#playervalue').text(` ${countCardValue(playerCards)}`)

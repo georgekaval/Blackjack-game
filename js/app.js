@@ -45,7 +45,7 @@ const checkPlayerAce = () => {
         }else if(playerAnswer.trim() === '1'){
           playerCards[i].value = 1
         }else if(playerAnswer.trim() !== '1' && playerAnswer.trim() !== '11'){
-          const playerAnswer = prompt('Would you like your Ace to be counted as 1 or 11?', '1/11')
+          const playerAnswer = prompt('Would you like your Ace to be counted as 1 or 11?', '1 or 11')
         }
       }
     }
@@ -91,6 +91,7 @@ const resetValues = () => {
   usedCards.push(...playerCards.splice(0,playerCards.length))
   $('#showPlayerCards').text('')
   $('#showDealerCards').text('')
+  $('#outcome').text('')
 }
 
 //Have the computer check when the hit me button is clicked, if user or computer passed 21 they get alert they lost and the buttons for hit me and stay are turned off
@@ -102,23 +103,27 @@ const hitMeCheckTwentyOne = (who, button1, button2) => {
   if(sum > 21 && who === playerCards) {
     showPlayersCards()
     const tellPlayerBust = () => {
-      alert(`${countCardValue(playerCards)}! Player busts, Dealer wins!`)
+      const $playerBust = $('<h3>').text(`${countCardValue(playerCards)}! Player busts, Dealer wins!`)
+      $('#outcome').append($playerBust)
+      // alert(`${countCardValue(playerCards)}! Player busts, Dealer wins!`)
     }
     setTimeout(tellPlayerBust,500)
     $(button1).remove()
     $(button2).remove()
-    setTimeout(resetValues,1000)
-    $('#playButton').show().text('New round')
+    // setTimeout(resetValues,1000)
+    $('#playButton').show().text('Play again')
   }if(sum > 21 && who === dealerCards) {
     showDealersCards()
     const tellDealerBust = () => {
-    alert(`${countCardValue(dealerCards)}! Dealer busts, Player wins!`)
+      const $dealerBust = $('<h3>').text(`${countCardValue(dealerCards)}! Dealer busts, Player wins!`)
+      $('#outcome').append($dealerBust)
+    // alert(`${countCardValue(dealerCards)}! Dealer busts, Player wins!`)
   }
     winBet()
     setTimeout(tellDealerBust,500)
     $(button1).remove()
     $(button2).remove()
-    setTimeout(resetValues,1000)
+    // setTimeout(resetValues,1000)
     $('#playButton').show().text('New round')
   }
 }
@@ -134,16 +139,19 @@ const checkHands = (button1, button2) => {
   $(button1).remove()
   $(button2).remove()
   if(playerSum > dealerSum && playerSum < 22) {
-    alert(`Player has ${countCardValue(playerCards)}, Dealer has ${countCardValue(dealerCards)}.  Player won!`)
+    const $playerwon = $('<h3>').text(`Player has ${countCardValue(playerCards)}, Dealer has ${countCardValue(dealerCards)}.  Player won!`)
+    $('#outcome').append($playerwon)
+    // alert(`Player has ${countCardValue(playerCards)}, Dealer has ${countCardValue(dealerCards)}.  Player won!`)
     winBet()
-    resetValues()
   }else if(dealerSum > playerSum && dealerSum < 22){
-    alert(`Dealer has ${countCardValue(dealerCards)}, Player has ${countCardValue(playerCards)}.  Dealer won!`)
-    resetValues()
+    const $dealerwon = $('<h3>').text(`Dealer has ${countCardValue(dealerCards)}, Player has ${countCardValue(playerCards)}.  Dealer won!`)
+    $('#outcome').append($dealerwon)
+    // alert(`Dealer has ${countCardValue(dealerCards)}, Player has ${countCardValue(playerCards)}.  Dealer won!`)
   }else if(dealerSum === playerSum){
-    alert(`Player has ${countCardValue(playerCards)} and Dealer has ${countCardValue(dealerCards)}.  Push!`)
+    const $tie = $('<h3>').text(`Player has ${countCardValue(playerCards)} and Dealer has ${countCardValue(dealerCards)}.  Push!`)
+    $('#outcome').append($tie)
+    // alert(`Player has ${countCardValue(playerCards)} and Dealer has ${countCardValue(dealerCards)}.  Push!`)
     tieBet()
-    resetValues()
   }
   $('#playButton').show().text('New round')
 }
@@ -192,7 +200,7 @@ $(() => {
     $($playBtn).css('display','none');
     const $betBtn = $('<button>').text('Bet').addClass('buttons')
     $('#playerMoney').prepend($betBtn)
-
+    resetValues()
   $($betBtn).on('click', () => {
     //shuffle the deck and make the deal button
     randomizeDeck()
@@ -200,7 +208,7 @@ $(() => {
       //place a bet
       bet()
       const $dealButton = $('<button>').text('Deal').addClass('buttons')
-      $('#dealSpace').append($dealButton)
+      $('#namePlayer').append($dealButton)
       $($betBtn).remove()
 
     $($dealButton).on('click', () => {
@@ -215,9 +223,9 @@ $(() => {
       playerCardsValue()
       //make the hit me and stay button
       const $hitMeButton = $('<button>').text('Hit Me').addClass('buttons')
-      $('#dealSpace').append($hitMeButton)
+      $('#namePlayer').append($hitMeButton)
       const $stayButton = $('<button>').text('Stay').addClass('buttons')
-      $('#dealSpace').append($stayButton)
+      $('#namePlayer').append($stayButton)
 
       $($hitMeButton).on('click', () => {
         //gives another card and checks if they went over 21

@@ -227,82 +227,75 @@ $(() => {
     $('#playerMoney').append($betBtn)
     reshuffle()
     resetValues()
-  $($betBtn).on('click', () => {
+    $($betBtn).on('click', () => {
     //shuffle the deck and make the deal button
-    randomizeDeck()
-    $('#playButton').hide()
+      randomizeDeck()
+      $('#playButton').hide()
       //place a bet
       bet()
       const $dealButton = $('<button>').text('Deal').addClass('buttons')
       $('#namePlayer').append($dealButton)
       $($betBtn).remove()
-
-    $($dealButton).on('click', () => {
+      $($dealButton).on('click', () => {
       //give each player two cards, turn the start button and the deal button off
-      dealCards()
-      $($dealButton).remove()
-      console.log(playerCards);
-      console.log(dealerCards);
-      //display the users cards and value of their cards
-      showPlayersCards()
-      showDealersCardsFaceDown()
-      playerCardsValue()
-      //make the hit me and stay button
-      const $hitMeButton = $('<button>').text('Hit Me').addClass('buttons')
-      $('#namePlayer').append($hitMeButton)
-      const $stayButton = $('<button>').text('Stay').addClass('buttons')
-      $('#namePlayer').append($stayButton)
-
-      $($hitMeButton).on('click', () => {
-        //gives another card and checks if they went over 21
-        hitMePlayer()
-        checkPlayerTwentyOne($hitMeButton, $stayButton)
-        $('#showPlayerCards').text('')
+        dealCards()
+        $($dealButton).remove()
+        //display the users cards and value of their cards
         showPlayersCards()
+        showDealersCardsFaceDown()
         playerCardsValue()
-
-      })
-      $($stayButton).on('click', () => {
-        //user stays with their cards and the computer gives itself another card if its cards value is less than 15, if not then checkhands has the cards compared to see who the winner is
-        $($hitMeButton).remove()
-        $($stayButton).remove()
-        checkDealerAce()
-        if(countCardValue(dealerCards) < 15){
-          stay($hitMeButton, $stayButton)
+        //make the hit me and stay button
+        const $hitMeButton = $('<button>').text('Hit Me').addClass('buttons')
+        $('#namePlayer').append($hitMeButton)
+        const $stayButton = $('<button>').text('Stay').addClass('buttons')
+        $('#namePlayer').append($stayButton)
+        $($hitMeButton).on('click', () => {
+          //gives another card and checks if they went over 21
+          hitMePlayer()
+          checkPlayerTwentyOne($hitMeButton, $stayButton)
+          $('#showPlayerCards').text('')
+          showPlayersCards()
+          playerCardsValue()
+        })
+        $($stayButton).on('click', () => {
+          //user stays with their cards and the computer gives itself another card if its cards value is less than 15, if not then checkhands has the cards compared to see who the winner is
+          $($hitMeButton).remove()
+          $($stayButton).remove()
+          checkDealerAce()
           if(countCardValue(dealerCards) < 15){
-              stay($hitMeButton, $stayButton)
+            stay($hitMeButton, $stayButton)
             if(countCardValue(dealerCards) < 15){
-                stay($hitMeButton, $stayButton)
+              stay($hitMeButton, $stayButton)
               if(countCardValue(dealerCards) < 15){
                 stay($hitMeButton, $stayButton)
+                if(countCardValue(dealerCards) < 15){
+                  stay($hitMeButton, $stayButton)
+                }
               }
             }
+          }if(countCardValue(dealerCards) >= 15){
+            $('#showDealerCards').text('')
+            showDealersCards()
+            compareHands()
           }
-        }if(countCardValue(dealerCards) >= 15){
-          $('#showDealerCards').text('')
-          showDealersCards()
-          compareHands()
-        }
+        })
       })
+      if(money <= 0){
+        alert('You ran out of money!')
+        $($betButton).remove()
+        $('#start').show().text('New game')
+        money = 200
+      }
+      if(money >= 400){
+        alert('You won!')
+        $($betButton).remove()
+        $('#start').show().text('New game')
+        money = 200
+      }
     })
-
-  if(money <= 0){
-    alert('You ran out of money!')
-    $($betButton).remove()
-    $('#start').show().text('New game')
-    money = 200
-  }
-  if(money >= 400){
-    alert('You won!')
-    $($betButton).remove()
-    $('#start').show().text('New game')
-    money = 200
-  }
-})
-})
+  })
   let a = 0
     $('#readRulesButton').on('click', () => {
-
       if(a == 1){
         $('#rulesBox').css('display', 'none')
         return a=0;
@@ -310,12 +303,7 @@ $(() => {
         $('#rulesBox').css('display', 'block')
         $('#rulesBox').css('border', 'solid black')
         $('#rulesBox').css('background', 'white')
-        $('#playerMoney').css('position', 'relative')
-        $('#playerMoney').css('bottom', '275px')
         return a=1;
       }
     })
-//I should not have to click stay twice for the computer to finish its turn, if the computer has under 15, the first stay does a hitme and does not do a checkHands. if the computer has over 15 when I stay it seems to work fine.
-//If player gets 21 on the beginning 2 cards, they should automatically win unless the dealer also has a 21 with the first 2 cards.
-      //By en:User:Cburnett - Own work  This W3C-unspecified vector image was created with Inkscape., CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=1843189
 })

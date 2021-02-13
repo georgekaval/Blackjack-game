@@ -79,16 +79,17 @@ const checkDealerAce = () => {
     }
   }
 }
+//Trying to give other betting options
+const betOptions = () => {
+  const $betFive = $('<button>').text(`Bet $5`).attr('id', 'betFive').addClass('buttons')
+  const $betTen = $('<button>').text(`Bet $10`).attr('id', 'betTen').addClass('buttons')
+  const $betTwenty = $('<button>').text(`Bet $20`).attr('id', 'betTwenty').addClass('buttons')
+  $('#playerMoney').append($betFive)
+  $('#playerMoney').append($betTen)
+  $('#playerMoney').append($betTwenty)
+}
 //set starting money
 let money = 200
-// const betOptions = () => {
-//   const $betFive = $('<button>').text(`Bet $5`)
-//   const $betTen = $('<button>').text(`Bet $10`)
-//   const $betTwenty = $('<button>').text(`Bet $10`)
-//   $('#playerMoney').append($betFive)
-//   $('#playerMoney').append($betTen)
-//   $('#playerMoney').append($betTwenty)
-// }
 //place a bet
 const bet = () => {
   let bet = 5

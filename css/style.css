@@ -6,19 +6,15 @@
 body {
   background-color: green;
 }
-#aces{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  height: 120px;
-  width: 400px;
-}
 #namePlayer{
   text-align: center;
+  font-family: 'Charm', cursive;
 }
 #dealer{
   text-align: center;
   height: 150px;
+  font-family: 'Charm', cursive;
+  font-size: 20px;
 }
 #dealerCardsContainer {
   text-align: center;
@@ -30,6 +26,7 @@ body {
   float: right;
   position: relative;
   bottom: 100px;
+  font-family: 'Charm', cursive;
 }
 .card{
   width: inherit;
@@ -52,6 +49,8 @@ body {
   display: flex;
   width: 964px;
   justify-content: space-around;
+  font-family: 'Charm', cursive;
+  font-size: 20px;
 }
 #playerMoney{
 
@@ -60,15 +59,17 @@ body {
   padding: 10px 10px;
   background-color: black;
   color:white;
-  font-size: 16px;
+  font-size: 24px;
+  font-family: 'Charm', cursive;
 }
 #rulesText{
-  font-size: 20px;
+  font-size: 16px;
+  font-family: 'Charm', cursive;
 }
 #rulesBox{
   display: none;
   text-align: center;
-  z-index: 1;
+  background-color: black;
 }
 #rules{
   position: absolute;
@@ -76,16 +77,20 @@ body {
 }
 #playButton{
   position: absolute;
-  top: 65%;
+  top: 15%;
   left: 43%;
   width: 200px;
   height: 50px;
   font-size: 25px;
+  font-family: 'Charm', cursive;
 }
 #outcome{
+  text-align : center;
   width:  100px;
-  background: white;
+  background: rgb(255, 0, 0);
   margin:  auto;
   position: relative;
   top: 100px;
+  border-radius: 100%;
+  font-family: 'Charm', cursive;
 }

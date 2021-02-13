@@ -81,6 +81,14 @@ const checkDealerAce = () => {
 }
 //set starting money
 let money = 200
+// const betOptions = () => {
+//   const $betFive = $('<button>').text(`Bet $5`)
+//   const $betTen = $('<button>').text(`Bet $10`)
+//   const $betTwenty = $('<button>').text(`Bet $10`)
+//   $('#playerMoney').append($betFive)
+//   $('#playerMoney').append($betTen)
+//   $('#playerMoney').append($betTwenty)
+// }
 //place a bet
 const bet = () => {
   let bet = 5
@@ -101,7 +109,9 @@ const tieBet = () => {
 }
 const displayOutcome = () => {
   $('#outcome').css('display', 'block')
-  $('#outcome').css('border', 'solid black')
+  $('#outcome').css('border', ' 0.5em solid black')
+  $('#outcome').css('padding', '1em')
+
 }
 //Check if players cards value is over 21, tell the player they lost, remove the hit me and stay button, and give the option to play again
 const checkPlayerTwentyOne = (button1, button2) => {
@@ -199,6 +209,7 @@ const showDealersCards = () => {
       $('#showDealerCards').append(dealerCards[i].img)
   }
 }
+//combine these functions when click the stay button.
 const stay = (button1, button2) => {
   hitMeDealer()
   checkDealerTwentyOne(button1, button2)

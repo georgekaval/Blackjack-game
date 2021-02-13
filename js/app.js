@@ -199,7 +199,14 @@ const showDealersCards = () => {
       $('#showDealerCards').append(dealerCards[i].img)
   }
 }
-
+const stay = (button1, button2) => {
+  hitMeDealer()
+  checkDealerTwentyOne(button1, button2)
+  checkDealerAce()
+  $('#showDealerCards').text('')
+  showDealersCards()
+  dealerCardsValue()
+}
 //reset values on screen and push the cards on the table into a used cards array
 const resetValues = () => {
   $('#playervalue').text('0')
@@ -261,32 +268,13 @@ $(() => {
         $($stayButton).remove()
         checkDealerAce()
         if(countCardValue(dealerCards) < 15){
-          hitMeDealer()
-          checkDealerTwentyOne($hitMeButton, $stayButton)
-          checkDealerAce()
-          $('#showDealerCards').text('')
-          showDealersCards()
-          dealerCardsValue()
+          stay($hitMeButton, $stayButton)
           if(countCardValue(dealerCards) < 15){
-            hitMeDealer()
-            checkDealerTwentyOne($hitMeButton, $stayButton)
-            dealerCardsValue()
-            $('#showDealerCards').text('')
-            showDealersCards()
-            checkDealerAce()
+              stay($hitMeButton, $stayButton)
             if(countCardValue(dealerCards) < 15){
-              hitMeDealer()
-              checkDealerTwentyOne($hitMeButton, $stayButton)
-              dealerCardsValue()
-              $('#showDealerCards').text('')
-              showDealersCards()
-              checkDealerAce()
+                stay($hitMeButton, $stayButton)
               if(countCardValue(dealerCards) < 15){
-                hitMeDealer()
-                checkDealerTwentyOne($hitMeButton, $stayButton)
-                dealerCardsValue()
-                $('#showDealerCards').text('')
-                showDealersCards()
+                stay($hitMeButton, $stayButton)
               }
             }
           }

@@ -26,6 +26,11 @@ body {
 #showDealerCards{
   height:100px;
 }
+#dealerCurrentValue{
+  float: right;
+  position: relative;
+  bottom: 100px;
+}
 .card{
   width: inherit;
   height: inherit;
@@ -48,9 +53,8 @@ body {
   width: 964px;
   justify-content: space-around;
 }
-
 #playerMoney{
-  float: right;
+  
 }
 .buttons{
   padding: 10px 10px;
